@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
 
 $dbinfo = "mysql:dbname=Comunio;host=localhost";
@@ -12,20 +13,21 @@ try {
     echo "La conexi&oacute;n ha fallado: " . $e->getMessage();
 }
 
-if (isset($_REQUEST['email'])) {
-    $email = $_REQUEST['email'];
-    $sql = $db->prepare("SELECT * FROM EquiposUsuarios WHERE Email=?");
-    $sql->bindParam(1, $email, PDO::PARAM_STR);
+if (isset($_REQUEST['usuario'])) {
+    $usuario = $_REQUEST['usuario'];
+    $sql = $db->prepare("SELECT * FROM EquiposUsuarios WHERE NombreUsuario=?");
+    $sql->bindParam(1, $usuario, PDO::PARAM_STR);
     $sql->execute();
-    $valid = 'true';
+    //$valid = 'true';
     if ($sql->rowCount() > 0) {
-        $valid= 'false';
+        $valid= 'true';
     } else {
-       $valid='true';
+       $valid='false';
     }
 }
 
 $sql=null;
 $db = null;
 echo $valid;
+
 ?>
