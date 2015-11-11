@@ -27,18 +27,18 @@ $("#formlogin").validate({
      onclick: false,
      rules: {
          usuario: {
-             required: true,
-             remote: "php/usuario.php"
+             required: true
          },
          password: {
-             required: true,
-             remote: "php/pass.php"
+             required: true
          }
      }
 });
 
 var idJugadores;
    $(document).ready(function() {
+   		$('#formularioCrear').fadeOut(1);
+   		$('#formulario').fadeOut(1);
        var miTabla = $('#miTabla').DataTable({
            'processing': true,
            'serverSide': true,
@@ -76,28 +76,288 @@ var idJugadores;
            }, {
                'data': 'Posicion'
            }, {
-               'data': 'Puntos jornada'
+               'data': 'Puntosjornada'
            }, {
-               'data': 'Puntos totales'
+               'data': 'Puntostotales'
            }, {
                'data': 'idJugadores'
-
-           
+               ,'render': function(data) {
+                   return '<a class="btn btn-primary editarbtn" href=http://localhost/Proyecto final/app/php/modificar_jugador.php?idJugadores=' + data + '>Editar</a><a data-toggle="modal" data-target="#basicModal"  class="btn btn-warning borrarbtn" >Borrar</a>';
+               }
            }]
        });
-       /*$('#miTabla').on('click', '.editarbtn', function(e) {
+       $('#miTabla').on('click', '.editarbtn', function(e) {
            e.preventDefault();
            $('#tabla').fadeOut(100);
            $('#formulario').fadeIn(100);
 
            var nRow = $(this).parents('tr')[0];
            var aData = miTabla.row(nRow).data();
-           $('#idDoctor').val(aData.idDoctor);
-           $('#nombre').val(aData.nombre);
-           $('#numcolegiado').val(aData.numcolegiado);
-           $('#clinicas').val(aData.nombreClinica);
-           cargarTarifas();
-           var str = aData.idClinica;
-           str = str.split(",");
-           $('#clinicas').val(str);]*/
+           $('#idJugador').val(aData.idJugadores);
+           $('#nombre').val(aData.Nombre);
+           $('#valor').val(aData.Valor);
+           $('#puntosjornada').val(aData.Puntosjornada);
+           $('#puntostotales').val(aData.Puntostotales);
        });
+
+
+
+       $('#formCrear').validate({
+
+           rules: {
+               nombreNuevo: {
+                   required: true
+               },
+               equipoNuevo: {
+                   required: true
+               },
+               valorNuevo: {
+                   required: true,
+                   digits: true
+               },
+               posicionNuevo: {
+                   required: true
+               }
+           },
+           submitHandler: function() {
+               var nombreNuevo = $('#nombreNuevo').val();
+               var equipoNuevo = $('#equipoNuevo').val();
+               var valorNuevo = $('#valorNuevo').val();
+               var posicionNuevo = $('#posicionNuevo').val();
+
+               $.ajax({
+                   type: 'POST',
+                   dataType: 'json',
+                   url: 'php/añadir_jugador.php',
+                   data: {
+                       nombreNuevo: nombreNuevo,
+                       equipoNuevo: equipoNuevo,
+                       valorNuevo: valorNuevo,
+                       posicionNuevo: posicionNuevo
+
+                   },
+                   error: function(xhr, status, error) {
+                       $.growl({
+
+                           icon: "glyphicon glyphicon-remove",
+                           message: "Error al añadir el jugador!"
+
+                       }, {
+                           type: "danger"
+                       });
+
+                   },
+                   success: function(data) {
+                       var $mitabla = $("#miTabla").dataTable({
+                           bRetrieve: true
+                       });
+                       $mitabla.fnDraw();
+                       if (data[0].estado == 0) {
+
+                           $.growl({
+
+                               icon: "glyphicon glyphicon-ok",
+                               message: "Jugador añadido correctamente!"
+
+                           }, {
+                               type: "success"
+                           });
+                       } else {
+
+                           $.growl({
+
+                               icon: "glyphicon glyphicon-remove",
+                               message: "Error al añadir el jugador!"
+
+                           }, {
+                               type: "danger"
+                           });
+                       }
+
+                   },
+                   complete: {}
+               });
+               $('#formularioCrear').fadeOut(100);
+               $('#tabla').fadeIn(100);
+
+           }
+
+       });
+       $('#creajugador').click(function(e) {
+           e.preventDefault();
+           $('#tabla').fadeOut(100);
+           $('#formularioCrear').fadeIn(100);
+       });
+       $('#formEditar').validate({
+
+           rules: {
+               nombre: {
+                   required: true,
+                   //lettersonly: true
+               },
+               valor: {
+                   required: true,
+                   digits: true
+               },
+               puntosjornada: {
+                   required: true,
+                   digits: true
+               }
+           },
+           submitHandler: function() {
+
+               var idJugador = $('#idJugador').val();
+               var nombre = $('#nombre').val();
+               var valor = $('#valor').val();
+               var puntosjornada = $('#puntosjornada').val();
+               var puntostotales = $('#puntostotales').val();
+
+               $.ajax({
+                   type: 'POST',
+                   dataType: 'json',
+                   url: 'php/modificar_jugador.php',
+                   data: {
+                       idJugador: idJugador,
+                       nombre: nombre,
+                       valor: valor,
+                       puntosjornada: puntosjornada,
+                       puntostotales: puntostotales
+                   },
+                   error: function(xhr, status, error) {
+                       $.growl({
+
+                           icon: "glyphicon glyphicon-remove",
+                           message: "Error al editar!"
+
+                       }, {
+                           type: "danger"
+                       });
+
+                   },
+                   success: function(data) {
+                       var $mitabla = $("#miTabla").dataTable({
+                           bRetrieve: true
+                       });
+                       $mitabla.fnDraw();
+                       if (data[0].estado == 0) {
+
+                           $.growl({
+
+                               icon: "glyphicon glyphicon-ok",
+                               message: "Jugador editado correctamente!"
+
+                           }, {
+                               type: "success"
+                           });
+                       } else {
+
+                           $.growl({
+
+                               icon: "glyphicon glyphicon-remove",
+                               message: "Error al editar el jugador!"
+
+                           }, {
+                               type: "danger"
+                           });
+                       }
+
+                   },
+                   complete: {}
+               });
+               $('#tabla').fadeIn(100);
+               $('#formulario').fadeOut(100);
+           }
+
+       });
+
+$('#miTabla').on('click', '.borrarbtn', function(e) {
+           var nRow = $(this).parents('tr')[0];
+           var aData = miTabla.row(nRow).data();
+           idJugador = aData.idJugadores;
+       });
+
+       $('#basicModal').on('click', '#confBorrar', function(e) {
+           $.ajax({
+               type: 'POST',
+               dataType: 'json',
+               url: 'php/borrar_jugador.php',
+               data: {
+                   idJugador: idJugador
+               },
+               error: function(xhr, status, error) {
+                   $.growl({
+
+                       icon: "glyphicon glyphicon-remove",
+                       message: "Error al borrar!"
+
+                   }, {
+                       type: "danger"
+                   });
+               },
+               success: function(data) {
+                   var $mitabla = $("#miTabla").dataTable({
+                       bRetrieve: true
+                   });
+                   $mitabla.fnDraw();
+                   $.growl({
+
+                       icon: "glyphicon glyphicon-remove",
+                       message: "Borrado realizado con exito!"
+
+                   }, {
+                       type: "success"
+                   });
+               },
+               complete: {}
+           });
+           $('#tabla').fadeIn(100);
+       });
+
+
+   });
+
+
+/*$('#miTabla').on('click', '.borrarbtn', function(e) {
+           var nRow = $(this).parents('tr')[0];
+           var aData = miTabla.row(nRow).data();
+           idJugador = aData.idJugadores;
+       });
+
+       $('#basicModal').on('click', '#confBorrar', function(e) {
+           $.ajax({
+               type: 'POST',
+               dataType: 'json',
+               url: 'php/borrar_jugador.php',
+               data: {
+                   idJugador: idJugador
+               },
+               error: function(xhr, status, error) {
+                   $.growl({
+
+                       icon: "glyphicon glyphicon-remove",
+                       message: "Error al borrar!"
+
+                   }, {
+                       type: "danger"
+                   });
+               },
+               success: function(data) {
+                   var $mitabla = $("#miTabla").dataTable({
+                       bRetrieve: true
+                   });
+                   $mitabla.fnDraw();
+                   $.growl({
+
+                       icon: "glyphicon glyphicon-remove",
+                       message: "Borrado realizado con exito!"
+
+                   }, {
+                       type: "success"
+                   });
+               },
+               complete: {}
+           });
+           $('#tabla').fadeIn(100);
+       });*/
+
+//});

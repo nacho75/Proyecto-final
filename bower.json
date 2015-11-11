@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "~3.3.5",
+    "bootstrap.growl": "~2.0.1",
     "jquery-validation": "jquery-validate#~1.14.0"
   },
   "overrides": {

@@ -16,8 +16,8 @@ $columns = array(
     array( 'db' => 'Valor',   'dt' => 'Valor' ),
     array( 'db' => 'EquipoReal',     'dt' => 'Equipo' ),
     array( 'db' => 'Posicion',     'dt' => 'Posicion' ),
-    array( 'db' => 'PuntosJornada',  'dt' => 'Puntos jornada' ),
-    array( 'db' => 'PuntosTotales',   'dt' => 'Puntos totales' )
+    array( 'db' => 'PuntosJornada',  'dt' => 'Puntosjornada' ),
+    array( 'db' => 'PuntosTotales',   'dt' => 'Puntostotales' )
 );
  
 // SQL server connection information
