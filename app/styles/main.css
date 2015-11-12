@@ -87,3 +87,20 @@ body {
     border-bottom: 0;
   }
 }
+
+/* AÑADIDO POR MI */
+.navbar-toggle{
+  background-color: #000;
+}
+
+.navbar-toggle .icon-bar{
+  background-color: #fff;
+}
+
+.dropdown-menu > li > a{
+  color: #337ab7;
+}
+
+.editarbtn{
+  margin-right: 5px;
+}

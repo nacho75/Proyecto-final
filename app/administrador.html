@@ -27,14 +27,58 @@
 
     
     <div class="container-fluid">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">Football Fantasy</h3>
-      </div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a href="administrador.html"><img class="navbar-brand" src="images/logo.png" alt="logo Football Fantasy">
+                </a>-->
+                <a class="navbar-brand" href="administrador.html">
+                    <span id="logo">Football Fantasy</span>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="administrador.html">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="#">Alineación</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clasificación
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Ultima jornada</a>
+                            </li>
+                            <li>
+                                <a href="#">Total</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mercado de fichajes
+                        <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Vender jugadores</a>
+                            </li>
+                            <li>
+                                <a href="#">Comprar jugadores</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!--<ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="">Contacto</a>
+                    </li>
+                </ul>-->
+            </div>
 
       <div id="tabla" class="row">
             <div class="col-md-12">
@@ -61,7 +105,10 @@
                         <th>Opciones</th>
                     </tfoot>
                 </table>
+                <button type="button" class="btn btn-info">Realizar fichajes</button>
+                <button type="button" class="btn btn-info">Calcular clasificaciones</button>
             </div>
+
         </div>
         <!-- Añadir -->
         <div id="formularioCrear" class="row">
