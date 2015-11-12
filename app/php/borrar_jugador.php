@@ -20,12 +20,12 @@ if (!mysql_select_db($gaSql['db'], $gaSql['link'])) {
 }
 mysql_query('SET names utf8');
 //$_REQUEST['id_doctor'] = 1;
-if (isset($_REQUEST['idJugadores'])) {
+if (isset($_REQUEST['idJugador'])) {
     // param was set in the query string
-    if (empty($_REQUEST['idJugadores'])) {
+    if (empty($_REQUEST['idJugador'])) {
         return "El parámetro idJugadores viene vacio!";
     }
-    $idJugador = $_REQUEST['idJugadores'];
+    $idJugador = $_REQUEST['idJugador'];
 }
 /*
  * SQL queries
