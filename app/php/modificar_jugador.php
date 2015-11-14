@@ -17,6 +17,7 @@ if (!mysql_select_db($gaSql['db'], $gaSql['link'])) {
     fatal_error('Could not select database ');
 }
 
+
 mysql_query('SET names utf8');
 
 
@@ -38,6 +39,7 @@ $query = "UPDATE Jugadores SET
 
 $query_res = mysql_query($query);
 
+
 if (!$query_res) {
     $mensaje  = 'Error en la consulta: ' . mysql_error() ;
     $estado = mysql_errno();
@@ -46,10 +48,14 @@ if (!$query_res) {
     $mensaje = "Actualización correcta";
     $estado = 0;
 }
+
+
 $resultado = array();
  $resultado[] = array(
       'mensaje' => $mensaje,
       'estado' => $estado
    );
+
+ 
 echo json_encode($resultado);
 ?>

@@ -1,40 +1,3 @@
-$("#formregistro").validate({
-     onkeyup: false,
-     onfocusout: false,
-     onclick: false,
-     rules: {
-         usuario: {
-             required: true
-         },
-         equipo: {
-             required: true
-         },
-         email: {
-             required: true,
-             minlength: 4,
-             email: true,
-             remote: "php/validar_email_db.php"
-         },
-         password: {
-             required: true
-         }
-     }
-});
-
-$("#formlogin").validate({
-     onkeyup: false,
-     onfocusout: false,
-     onclick: false,
-     rules: {
-         usuario: {
-             required: true
-         },
-         password: {
-             required: true
-         }
-     }
-});
-
 var idJugadores;
    $(document).ready(function() {
    		$('#formularioCrear').fadeOut(1);
@@ -301,7 +264,7 @@ $('#miTabla').on('click', '.borrarbtn', function(e) {
                    $mitabla.fnDraw();
                    $.growl({
 
-                       icon: "glyphicon glyphicon-remove",
+                       icon: "glyphicon glyphicon-ok",
                        message: "Borrado realizado con exito!"
 
                    }, {
@@ -316,48 +279,52 @@ $('#miTabla').on('click', '.borrarbtn', function(e) {
 
    });
 
-
-/*$('#miTabla').on('click', '.borrarbtn', function(e) {
-           var nRow = $(this).parents('tr')[0];
-           var aData = miTabla.row(nRow).data();
-           idJugador = aData.idJugadores;
-       });
-
-       $('#basicModal').on('click', '#confBorrar', function(e) {
-           $.ajax({
+$('#calclasif').click(function(e) {
+ $.ajax({
                type: 'POST',
                dataType: 'json',
-               url: 'php/borrar_jugador.php',
-               data: {
-                   idJugador: idJugador
-               },
+               url: 'php/calcular_clasificaciones.php',
                error: function(xhr, status, error) {
                    $.growl({
-
                        icon: "glyphicon glyphicon-remove",
-                       message: "Error al borrar!"
-
+                       message: "Error al calcular las clasificaciones!"
                    }, {
                        type: "danger"
                    });
                },
                success: function(data) {
-                   var $mitabla = $("#miTabla").dataTable({
-                       bRetrieve: true
-                   });
-                   $mitabla.fnDraw();
                    $.growl({
-
-                       icon: "glyphicon glyphicon-remove",
-                       message: "Borrado realizado con exito!"
-
+                       icon: "glyphicon glyphicon-ok",
+                       message: "Cálculo de clasificaciones realizado con éxito!"
                    }, {
                        type: "success"
                    });
                },
                complete: {}
            });
-           $('#tabla').fadeIn(100);
-       });*/
+       });
 
-//});
+$('#resetearpuntos').click(function(e) {
+ $.ajax({
+               type: 'POST',
+               dataType: 'json',
+               url: 'php/resetear_puntos.php',
+               error: function(xhr, status, error) {
+                   $.growl({
+                       icon: "glyphicon glyphicon-remove",
+                       message: "Error al resetear los puntos!"
+                   }, {
+                       type: "danger"
+                   });
+               },
+               success: function(data) {
+                   $.growl({
+                       icon: "glyphicon glyphicon-ok",
+                       message: "Reseteo de puntos realizado con éxito!"
+                   }, {
+                       type: "success"
+                   });
+               },
+               complete: {}
+           });
+       });

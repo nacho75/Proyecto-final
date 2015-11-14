@@ -1,9 +1,11 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 
+
 $dbinfo = "mysql:dbname=Comunio;host=localhost";
 $user = "root";
 $pass = "1234";
+
 
 try {
     $db = new PDO($dbinfo, $user, $pass);
@@ -11,6 +13,7 @@ try {
 } catch (Exception $e) {
     echo "La conexi&oacute;n ha fallado: " . $e->getMessage();
 }
+
 
 if (isset($_REQUEST['email'])) {
     $email = $_REQUEST['email'];
@@ -24,6 +27,7 @@ if (isset($_REQUEST['email'])) {
        $valid='true';
     }
 }
+
 
 $sql=null;
 $db = null;
