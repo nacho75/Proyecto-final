@@ -27,22 +27,15 @@
     
     <div class="container-fluid">
       <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
         <h3 class="text-muted">Football Fantasy</h3>
       </div>
 
       <div class="form-box">
                 <form action="php/login.php" id="formlogin" method="post" novalidate>
                     <input name="usuario" id="usuario" type="text" placeholder="Usuario">
-                    <input type="pass" name="password" id="password" placeholder="Contraseña">
+                    <input type="password" name="password" id="password" placeholder="Contraseña">
                     <button class="btn btn-info login" id="enviar" name="enviar" type="submit">Login</button>
                     <a class="btn btn-info" href="registrarse.html" role="button">Registrarse</a>
-                    <!--onclick = "this.form.action = 'administrador.html'; this.form.submit()"
-                    <button class="btn btn-info login" id="registrar" name="registrar" onclick = "this.form.action = 'registrarse.html'; this.form.submit()">Registrarse</button>-->
                 </form>
       </div>
 
@@ -73,6 +66,7 @@
     <script src="../bower_components/bootstrap/js/scrollspy.js"></script>
     <script src="../bower_components/bootstrap/js/collapse.js"></script>
     <script src="../bower_components/bootstrap/js/tab.js"></script>
+    <script src="../bower_components/bootstrap.growl/bootstrap-growl.js"></script>
     <script src="scripts/messages_es.js"></script>
     <!-- endbuild -->
     

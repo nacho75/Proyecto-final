@@ -37,8 +37,7 @@ if ($b = $query2->fetch()) {
     }
         
 } else {
-    echo "<script type=\"text/javascript\">alert(\"Error en la identificación\");</script>";
-    header("refresh:0.1;url=../index.html");
+    echo "<script type=\"text/javascript\">alert(\"Error en la identificación\");window.location.href=\"../index.html\"</script>";
 }
 
 

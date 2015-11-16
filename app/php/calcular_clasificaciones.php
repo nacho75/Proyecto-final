@@ -48,26 +48,30 @@ foreach ($id as $var) {
       $puntos += $pun;
     }
 
-    $sQuery3 = "SELECT PuntosTotales FROM EquiposUsuarios WHERE idEquiposUsuarios=" . $var;
+    $sQuery3 = "SELECT PuntosTotales,Saldo FROM EquiposUsuarios WHERE idEquiposUsuarios=" . $var;
     $rResult3 = mysql_query($sQuery3, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
 
     while ($fila3 = mysql_fetch_array($rResult3)) {
       $resultado3[] = array(
-        $puntot[] = $fila3['PuntosTotales']
+        $puntot[] = $fila3['PuntosTotales'],
+        $saldo[] = $fila3['Saldo']
       );
     }
 
     $puntostotales=0;
+    $saldonuevo=0;
 
     foreach ($puntot as $puntostotales) {
       $puntostotales += $puntos;
+      $saldonuevo = $saldo[0] + $puntos * 100000;
     }
 
+    $saldo="";
     $puntot="";
     $punjor="";
 
-    $sQuery3 = "UPDATE EquiposUsuarios SET PuntosJornada= '" . $puntos . "', PuntosTotales = '" . $puntostotales . "' WHERE idEquiposUsuarios = '" . $var."'";
-    $query_res = mysql_query($sQuery3);
+    $sQuery4 = "UPDATE EquiposUsuarios SET PuntosJornada= '" . $puntos . "', PuntosTotales = '" . $puntostotales . "', Saldo = '" . $saldonuevo . "' WHERE idEquiposUsuarios = '" . $var."'";
+    $query_res = mysql_query($sQuery4);
 
   }
 

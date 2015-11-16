@@ -4,7 +4,8 @@ $("#formregistro").validate({
      onclick: false,
      rules: {
          usuario: {
-             required: true
+             required: true,
+             remote: "php/validar_usuario_db.php"
          },
          equipo: {
              required: true

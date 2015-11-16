@@ -16,13 +16,32 @@ if (!$gaSql['link'] = mysql_pconnect($gaSql['server'], $gaSql['user'], $gaSql['p
 if (!mysql_select_db($gaSql['db'], $gaSql['link'])) {
     fatal_error('Could not select database ');
 }
+
+
 mysql_query('SET names utf8');
 
 
+$query = "UPDATE Jugadores SET PuntosJornada = 0";
+$query_res = mysql_query($query);
 
 
+if (!$query_res) {
+    $mensaje  = 'Error en la consulta: ' . mysql_error() ;
+    $estado = mysql_errno();
+    
+} else {
+    $mensaje = "Actualización correcta";
+    $estado = 0;
+}
 
 
+$resultado = array();
+$resultado[] = array(
+      'mensaje' => $mensaje,
+      'estado' => $estado
+);
 
+ 
+echo json_encode($resultado);
 
 ?>

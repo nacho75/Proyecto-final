@@ -1,3 +1,7 @@
+$.validator.addMethod("lettersonly", function(value, element) {
+  return this.optional(element) || /^[a-z\s\ñ\Ñ]+$/i.test(value);
+}, "Solo letras por favor");
+
 var idJugadores;
    $(document).ready(function() {
    		$('#formularioCrear').fadeOut(1);
@@ -17,7 +21,7 @@ var idJugadores;
                'sInfoPostFix': '',
                'sSearch': 'Buscar:',
                'sUrl': '',
-               'sInfoThousands': ',',
+               'sInfoThousands': '.',
                'sLoadingRecords': 'Cargando...',
                'oPaginate': {
                    'sFirst': 'Primero',
@@ -49,6 +53,7 @@ var idJugadores;
                }
            }]
        });
+
        $('#miTabla').on('click', '.editarbtn', function(e) {
            e.preventDefault();
            $('#tabla').fadeOut(100);
@@ -69,7 +74,8 @@ var idJugadores;
 
            rules: {
                nombreNuevo: {
-                   required: true
+                   required: true,
+                   lettersonly: true
                },
                equipoNuevo: {
                    required: true
@@ -79,7 +85,8 @@ var idJugadores;
                    digits: true
                },
                posicionNuevo: {
-                   required: true
+                   required: true,
+                   lettersonly: true
                }
            },
            submitHandler: function() {
@@ -146,22 +153,30 @@ var idJugadores;
            }
 
        });
+
        $('#creajugador').click(function(e) {
            e.preventDefault();
+
            $('#tabla').fadeOut(100);
            $('#formularioCrear').fadeIn(100);
+
+           $('#nombreNuevo').val("");
+           $('#equipoNuevo').val("");
+           $('#valorNuevo').val("");
+           $('#posicionNuevo').val("");
        });
+
        $('#formEditar').validate({
 
            rules: {
                nombre: {
                    required: true,
-                   //lettersonly: true
+                   lettersonly: true
                },
                valor: {
                    required: true,
                    digits: true
-               },
+                  },
                puntosjornada: {
                    required: true,
                    digits: true
@@ -327,4 +342,5 @@ $('#resetearpuntos').click(function(e) {
                },
                complete: {}
            });
+           location.reload();
        });
