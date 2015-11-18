@@ -24,7 +24,7 @@ $query2->bindParam(":email", $email);
 $query2->bindParam(":equipo", $equipo);
 $query2->bindParam(":saldo", $saldo);
 $query2->execute();
-echo "<script type=\"text/javascript\">alert(\"El usuario se registro correctamente\");</script>";
+echo "<script type=\"text/javascript\">alert(\"El usuario se registro correctamente\");window.location.href=\"../inicio.html\"</script>";
 
 
 ?>
