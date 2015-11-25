@@ -1,7 +1,7 @@
 <?php
  header('Access-Control-Allow-Origin: *');
 
-$table = 'EquiposUsuarios';
+$table = 'clasjor';
  
 
 $primaryKey = 'idEquiposUsuarios';

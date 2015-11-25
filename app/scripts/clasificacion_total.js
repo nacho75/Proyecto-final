@@ -4,6 +4,9 @@ $(document).ready(function() {
                     'serverSide': true,
                     'ajax': 'php/cargar_clasificacion_total.php',
                     "order": [[ 4, "desc" ]],
+                    "paging":   false,
+                    "searching": false,
+                    "info":     false,
                     'language': {
                         'sProcessing': 'Procesando...',
                         'sLengthMenu': 'Mostrar _MENU_ registros',
@@ -32,9 +35,11 @@ $(document).ready(function() {
                             'data': 'idEquiposUsuarios',
                             "visible": false
                         }, {
-                            'data': 'NombreUsuario'
+                            'data': 'NombreUsuario',
+                            "bSortable": false
                         }, {
-                            'data': 'NombreEquipo'
+                            'data': 'NombreEquipo',
+                            "bSortable": false
                         }, {
                             'data': 'Valor'
                         }, {
