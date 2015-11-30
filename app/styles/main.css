@@ -124,9 +124,41 @@ body {
     margin: 0 auto;
     background-image: url(../images/campo.png);
     max-width: 463px;
-    margin-top: 20px;
     position: relative;
 }
+
+.botones{
+  margin: 0 auto;
+  max-width: 270px;
+}
+
+.fila1{
+  margin: 0 auto;
+  max-width: 253px;
+}
+
+.fila2{
+  margin: 0 auto;
+  padding-top: 5px;
+  max-width: 190px;
+}
+
+.alinear{
+  max-width: 144px;
+  margin: 0 auto;
+}
+
+.guardar{
+  margin: 20px 0;
+}
+
+.titulares{
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    margin: 0 4px;
+}
+
 
 @media (max-width: 465px) {
     .campo {
@@ -165,7 +197,6 @@ body {
 }
 
 .lineadel {
-    border: 0px;
     height: 105px;
 }
 
@@ -179,4 +210,84 @@ body {
 
 .lineapor {
     height: 105px;
+}
+
+.del1 {
+  top: 30px;
+  left: 203px;
+}
+
+.del2 {
+  top: 30px;
+  left: 205px;
+}
+
+.del3 {
+  top: 30px;
+  left: 17px;
+}
+
+.del4 {
+  top: 30px;
+  left: -100px;
+}
+
+.del5 {
+  top: 30px;
+  left: 73px;
+}
+
+.med1 {
+  top: 55px;
+  left: 203px;
+}
+
+.med2 {
+  top: 30px;
+  left: 205px;
+}
+
+.med3 {
+  top: 30px;
+  left: 17px;
+}
+
+.med4 {
+  top: 0px;
+  left: -115px;
+}
+
+.med5 {
+  top: 0px;
+  left: 88px;
+}
+
+.def1 {
+  top: 55px;
+  left: 203px;
+}
+
+.def2 {
+  top: 30px;
+  left: 205px;
+}
+
+.def3 {
+  top: 30px;
+  left: 17px;
+}
+
+.def4 {
+  top: 00px;
+  left: -130px;
+}
+
+.def5 {
+  top: 0px;
+  left: 103px;
+}
+
+.por {
+  top: 30px;
+  left: 203px;
 }
