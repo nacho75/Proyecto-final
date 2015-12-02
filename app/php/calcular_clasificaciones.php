@@ -33,7 +33,7 @@ foreach ($id as $var) {
 
   if ($var!=="1") {
 
-    $sQuery2 = "SELECT PuntosJornada FROM Jugadores WHERE Alineado=true AND idEquiposUsuarios=" . $var;
+    $sQuery2 = "SELECT PuntosJornada FROM Jugadores WHERE Alineado='Si' AND idEquiposUsuarios=" . $var;
     $rResult2 = mysql_query($sQuery2, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
 
     while ($fila2 = mysql_fetch_array($rResult2)) {

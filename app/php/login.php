@@ -31,9 +31,13 @@ $query2->execute();
 
 if ($b = $query2->fetch()) {
     if ($b[0] == "admin"){
-        header("refresh:0.1;url=../administrador.html");
+    	session_start();
+    	$_SESSION['usuarios']= $usuario;
+        header("refresh:0.1;url=../administrador.html?usuario=$usuario");
     } else {
-        header("refresh:0.1;url=../inicio.html");
+    	session_start();
+    	$_SESSION['usuarios']= $usuario;
+        header("refresh:0.1;url=../inicio.html?usuario=$usuario");
     }
         
 } else {

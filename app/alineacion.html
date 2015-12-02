@@ -1,3 +1,11 @@
+
+<?php
+ session_start();
+ if (!isset($_SESSION['usuarios'])) {
+    header("Location: index.html");
+         }
+?>
+
 <!doctype html>
 <html lang="es">
 
@@ -71,30 +79,30 @@
                     </ul>
                 </li>
             </ul>
-            <!--<ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="">Contacto</a>
+                        <a href="php/salir.php">Salir</a>
                     </li>
-                </ul>-->
+                </ul>
         </div>
         <div class="container">
             <div class="row">
                 <div class="botones">
                     <div class="fila1">
-                        <a class="btn btn-info" role="button">4-4-2</a>
-                        <a class="btn btn-info" role="button">4-3-3</a>
-                        <a class="btn btn-info" role="button">3-4-3</a>
-                        <a class="btn btn-info" role="button">3-5-2</a>
+                        <a class="btn btn-info" role="button" id="4-4-2">4-4-2</a>
+                        <a class="btn btn-info" role="button" id="4-3-3">4-3-3</a>
+                        <a class="btn btn-info" role="button" id="3-4-3">3-4-3</a>
+                        <a class="btn btn-info" role="button" id="3-5-2">3-5-2</a>
                     </div>
                     <div class="fila2">
-                        <a class="btn btn-info" role="button">4-5-1</a>
-                        <a class="btn btn-info" role="button">5-3-2</a>
-                        <a class="btn btn-info" role="button">5-4-1</a>
+                        <a class="btn btn-info" role="button" id="4-5-1">4-5-1</a>
+                        <a class="btn btn-info" role="button" id="5-3-2">5-3-2</a>
+                        <a class="btn btn-info" role="button" id="5-4-1">5-4-1</a>
                     </div>
                 </div>
                 <div class="campo">
                     <div class="lineadel">
-                        <div class="titulares del1">
+                        <div class="titulares del1" id="del1">
                             <img src="images/player.png" height="50" width="50" alt="">
                         </div>
                         <div class="titulares del2">
@@ -155,6 +163,28 @@
                 </div>
             </div>
         </div>
+        <div class="container-fluid">
+            <div id="tabla" class="row">
+            <div class="col-md-12">
+                <table id="Tablaali" class="table striped table-bordered">
+                    <thead>
+                        <th>Posicion</th>
+                        <th>Equipo</th>
+                        <th>Nombre</th>
+                        <th>Puntos</th>
+                        <th>Valor</th>
+                        <th>Alineado</th>
+                        <th>Vendible</th>
+                        <th>Jugador</th>
+                        <th>Opciones</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        </div>
         <div class="footer">
         </div>
     </div>
@@ -176,12 +206,16 @@
     <script src="../bower_components/bootstrap/js/scrollspy.js"></script>
     <script src="../bower_components/bootstrap/js/collapse.js"></script>
     <script src="../bower_components/bootstrap/js/tab.js"></script>
+    <script src="../bower_components/bootstrap.growl/bootstrap-growl.js"></script>
     <!--<script src="../bower_components/bootstrap.growl/bootstrap-growl.js"></script>
     <script src="scripts/messages_es.js"></script>-->
     <!-- endbuild -->
     <!-- build:js scripts/main.js -->
     <!--S<script src="scripts/jquery.dataTables.js"></script>
     <script src="scripts/dataTables.bootstrap.js"></script>-->
+
+    <script src="scripts/jquery.dataTables.js"></script>
+    <script src="scripts/dataTables.bootstrap.js"></script>
     <script src="scripts/alineacion.js"></script>
     <!-- endbuild -->
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
