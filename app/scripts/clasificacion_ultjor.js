@@ -1,5 +1,5 @@
 $(document).ready(function() {
-            var Tablaclatot = $('#Tablaclatot').DataTable({
+            var Tablaclaultjor = $('#Tablaclaultjor').DataTable({
                     'processing': true,
                     'serverSide': true,
                     'ajax': 'php/cargar_clasificacion_ultjor.php',

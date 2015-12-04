@@ -1,3 +1,4 @@
+var idJugadores;
 $(document).ready(function() {
     var Tablaali = $('#Tablaali').DataTable({
         'processing': true,
@@ -49,8 +50,36 @@ $(document).ready(function() {
             "visible": false
         }, {
             'data': 'idJugadores',
+            "visible": false
+                //'render': function(data) {
+                /*if (data =='7') {
+                    return 'hola';
+                };
+                if (data != '7') {
+                    return 'adios';
+                };
+                href=http://localhost/Proyecto final/app/php/alinear.php?idJugadores=' + data + 
+                */
+                //return '<a class="btn btn-primary ali">Alinear</a><a class="btn btn-primary quiali" >Quitar del 11</a><a class="btn btn-primary editarbtn">Vender</a><a class="btn btn-primary editarbtn">Quitar del mercado</a>';
+        }, {
+            'data': 'Alineado',
             'render': function(data) {
-                return '<a class="btn btn-primary editarbtn">Alinear</a><a class="btn btn-primary editarbtn" >Quitar del 11</a><a class="btn btn-primary editarbtn">Vender</a><a class="btn btn-primary editarbtn">Quitar del mercado</a>';
+                if (data == 'Si') {
+                    return '<a class="btn btn-primary quiali" >Quitar del 11</a>';
+                };
+                if (data == 'No') {
+                    return '<a class="btn btn-primary ali">Alinear</a>';
+                };
+            }
+        }, {
+            'data': 'Vendible',
+            'render': function(data) {
+                if (data == 'Si') {
+                    return '<a class="btn btn-primary quimer" >Quitar del mercado</a>';
+                };
+                if (data == 'No') {
+                    return '<a class="btn btn-primary mer">Vender</a>';
+                };
             }
         }]
     });
@@ -67,7 +96,176 @@ $(document).ready(function() {
         });
     }
     load();
+    $('#Tablaali').on('click', '.ali', function(e) {
+        e.preventDefault();
+        var nRow = $(this).parents('tr')[0];
+        var aData = Tablaali.row(nRow).data();
+        idJugador = aData.idJugadores;
+        Posicion = aData.Posicion;
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'php/alinear.php',
+            data: {
+                idJugador: idJugador,
+                Posicion: Posicion
+            },
+            error: function(xhr, status, error) {
+                $.growl({
+
+                    icon: "glyphicon glyphicon-remove",
+                    message: "Error al alinear!"
+
+                }, {
+                    type: "danger"
+                });
+
+            },
+            success: function(data) {
+                if (data[0].estado == 0) {
+
+                    $.growl({
+
+                        icon: "glyphicon glyphicon-ok",
+                        message: "Jugador alineado correctamente!"
+
+                    }, {
+                        type: "success"
+                    });
+                } else {
+
+                    $.growl({
+
+                        icon: "glyphicon glyphicon-remove",
+                        message: "Tienes completa esa posición!"
+
+                    }, {
+                        type: "danger"
+                    });
+                }
+
+            },
+            complete: {}
+        });
+        Tablaali.ajax.reload();
+    });
+    $('#Tablaali').on('click', '.quiali', function(e) {
+        e.preventDefault();
+        var nRow = $(this).parents('tr')[0];
+        var aData = Tablaali.row(nRow).data();
+        idJugador = aData.idJugadores;
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'php/quitar_alineado.php',
+            data: {
+                idJugador: idJugador
+            },
+            error: function(xhr, status, error) {
+                $.growl({
+
+                    icon: "glyphicon glyphicon-remove",
+                    message: "Error al quitar al jugador de la alineación!"
+
+                }, {
+                    type: "danger"
+                });
+
+            },
+            success: function(data) {
+                $.growl({
+
+                    icon: "glyphicon glyphicon-ok",
+                    message: "Jugador eliminado de la alineación correctamente!"
+
+                }, {
+                    type: "success"
+                });
+
+            },
+            complete: {}
+        });
+        Tablaali.ajax.reload();
+    });
+    $('#Tablaali').on('click', '.mer', function(e) {
+        e.preventDefault();
+        var nRow = $(this).parents('tr')[0];
+        var aData = Tablaali.row(nRow).data();
+        idJugador = aData.idJugadores;
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'php/vender.php',
+            data: {
+                idJugador: idJugador
+            },
+            error: function(xhr, status, error) {
+                $.growl({
+
+                    icon: "glyphicon glyphicon-remove",
+                    message: "Error al poner en el mercado al jugador!"
+
+                }, {
+                    type: "danger"
+                });
+
+            },
+            success: function(data) {
+                    $.growl({
+
+                        icon: "glyphicon glyphicon-ok",
+                        message: "Jugador puesto en el mercado correctamente!"
+
+                    }, {
+                        type: "success"
+                    });
+
+            },
+            complete: {}
+        });
+        Tablaali.ajax.reload();
+    });
+    $('#Tablaali').on('click', '.quimer', function(e) {
+        e.preventDefault();
+        var nRow = $(this).parents('tr')[0];
+        var aData = Tablaali.row(nRow).data();
+        idJugador = aData.idJugadores;
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'php/quitar_mercado.php',
+            data: {
+                idJugador: idJugador
+            },
+            error: function(xhr, status, error) {
+                $.growl({
+
+                    icon: "glyphicon glyphicon-remove",
+                    message: "Error al quitar al jugador del mercado!"
+
+                }, {
+                    type: "danger"
+                });
+
+            },
+            success: function(data) {
+                $.growl({
+
+                    icon: "glyphicon glyphicon-ok",
+                    message: "Jugador eliminado del mercado correctamente!"
+
+                }, {
+                    type: "success"
+                });
+
+            },
+            complete: {}
+        });
+        Tablaali.ajax.reload();
+    });
 });
+
+
 
 $('#4-4-2').click(function() {
     document.getElementsByClassName('del1')[0].style.visibility = 'hidden';
@@ -102,12 +300,12 @@ $('#4-4-2').click(function() {
             });
         },
         success: function(data) {
-            $.growl({
+            /*$.growl({
                 icon: "glyphicon glyphicon-ok",
                 message: "Actualización de tactica con éxito!"
             }, {
                 type: "success"
-            });
+            });*/
         },
         complete: {}
     });
@@ -148,12 +346,12 @@ $('#4-3-3').click(function() {
             });
         },
         success: function(data) {
-            $.growl({
+            /*$.growl({
                 icon: "glyphicon glyphicon-ok",
                 message: "Actualización de tactica con éxito!"
             }, {
                 type: "success"
-            });
+            });*/
         },
         complete: {}
     });
@@ -194,12 +392,12 @@ $('#3-4-3').click(function() {
             });
         },
         success: function(data) {
-            $.growl({
+            /*$.growl({
                 icon: "glyphicon glyphicon-ok",
                 message: "Actualización de tactica con éxito!"
             }, {
                 type: "success"
-            });
+            });*/
         },
         complete: {}
     });
@@ -240,12 +438,12 @@ $('#3-5-2').click(function() {
             });
         },
         success: function(data) {
-            $.growl({
+            /*$.growl({
                 icon: "glyphicon glyphicon-ok",
                 message: "Actualización de tactica con éxito!"
             }, {
                 type: "success"
-            });
+            });*/
         },
         complete: {}
     });
@@ -286,12 +484,12 @@ $('#4-5-1').click(function() {
             });
         },
         success: function(data) {
-            $.growl({
+            /*$.growl({
                 icon: "glyphicon glyphicon-ok",
                 message: "Actualización de tactica con éxito!"
             }, {
                 type: "success"
-            });
+            });*/
         },
         complete: {}
     });
@@ -332,12 +530,12 @@ $('#5-3-2').click(function() {
             });
         },
         success: function(data) {
-            $.growl({
+            /*$.growl({
                 icon: "glyphicon glyphicon-ok",
                 message: "Actualización de tactica con éxito!"
             }, {
                 type: "success"
-            });
+            });*/
         },
         complete: {}
     });
@@ -377,12 +575,12 @@ $('#5-4-1').click(function() {
             });
         },
         success: function(data) {
-            $.growl({
+            /*$.growl({
                 icon: "glyphicon glyphicon-ok",
                 message: "Actualización de tactica con éxito!"
             }, {
                 type: "success"
-            });
+            });*/
         },
         complete: {}
     });

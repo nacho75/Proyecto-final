@@ -120,11 +120,44 @@ body {
     margin-right: 5px;
 }
 
+#Tablaali {
+  text-align: center;
+}
+
+#Tablaclatot{
+  text-align: center;
+}
+
+#Tablaclaultjor{
+  text-align: center;
+}
+
+#miTabla{
+  text-align: center;  
+}
+
+.ali {
+    margin-right: 5px;
+}
+
+.quiali {
+    margin-right: 5px;
+}
+
+.mer {
+    margin-right: 5px;
+}
+
+.quimer {
+    margin-right: 5px;
+}
+
 .campo {
     margin: 0 auto;
     background-image: url(../images/campo.png);
     max-width: 463px;
     position: relative;
+    padding-bottom: 25px;
 }
 
 .botones{
