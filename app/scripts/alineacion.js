@@ -51,16 +51,6 @@ $(document).ready(function() {
         }, {
             'data': 'idJugadores',
             "visible": false
-                //'render': function(data) {
-                /*if (data =='7') {
-                    return 'hola';
-                };
-                if (data != '7') {
-                    return 'adios';
-                };
-                href=http://localhost/Proyecto final/app/php/alinear.php?idJugadores=' + data + 
-                */
-                //return '<a class="btn btn-primary ali">Alinear</a><a class="btn btn-primary quiali" >Quitar del 11</a><a class="btn btn-primary editarbtn">Vender</a><a class="btn btn-primary editarbtn">Quitar del mercado</a>';
         }, {
             'data': 'Alineado',
             'render': function(data) {
@@ -78,7 +68,7 @@ $(document).ready(function() {
                     return '<a class="btn btn-primary quimer" >Quitar del mercado</a>';
                 };
                 if (data == 'No') {
-                    return '<a class="btn btn-primary mer">Vender</a>';
+                    return '<a data-toggle="modal" data-target="#basicModal" class="btn btn-primary mer">Vender</a>';
                 };
             }
         }]
@@ -90,7 +80,16 @@ $(document).ready(function() {
             url: "php/cargar_tactica.php",
             dataType: "json",
             success: function(data) {
-                //alert(data);
+                document.getElementById(data).click();
+            }
+        });
+    }
+    function comprobar() {
+        $.ajax({
+            type: "POST",
+            url: "php/comprobar_equipo.php",
+            dataType: "json",
+            success: function(data) {
                 document.getElementById(data).click();
             }
         });
@@ -188,29 +187,33 @@ $(document).ready(function() {
         Tablaali.ajax.reload();
     });
     $('#Tablaali').on('click', '.mer', function(e) {
-        e.preventDefault();
         var nRow = $(this).parents('tr')[0];
         var aData = Tablaali.row(nRow).data();
         idJugador = aData.idJugadores;
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            url: 'php/vender.php',
-            data: {
-                idJugador: idJugador
-            },
-            error: function(xhr, status, error) {
-                $.growl({
+    });
 
-                    icon: "glyphicon glyphicon-remove",
-                    message: "Error al poner en el mercado al jugador!"
+    $('#basicModal').on('click', '#confvender', function(e) {
+            var precio = $('#precioventa').val();
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: 'php/vender.php',
+                data: {
+                    idJugador: idJugador,
+                    precio: precio
+                },
+                error: function(xhr, status, error) {
+                    $.growl({
 
-                }, {
-                    type: "danger"
-                });
+                        icon: "glyphicon glyphicon-remove",
+                        message: "Error al poner en el mercado al jugador!"
 
-            },
-            success: function(data) {
+                    }, {
+                        type: "danger"
+                    });
+
+                },
+                success: function(data) {
                     $.growl({
 
                         icon: "glyphicon glyphicon-ok",
@@ -220,10 +223,10 @@ $(document).ready(function() {
                         type: "success"
                     });
 
-            },
-            complete: {}
-        });
-        Tablaali.ajax.reload();
+                },
+                complete: {}
+            });
+            Tablaali.ajax.reload();
     });
     $('#Tablaali').on('click', '.quimer', function(e) {
         e.preventDefault();
@@ -263,10 +266,6 @@ $(document).ready(function() {
         });
         Tablaali.ajax.reload();
     });
-});
-
-
-
 $('#4-4-2').click(function() {
     document.getElementsByClassName('del1')[0].style.visibility = 'hidden';
     document.getElementsByClassName('del2')[0].style.visibility = 'visible';
@@ -309,8 +308,13 @@ $('#4-4-2').click(function() {
         },
         complete: {}
     });
-
+            Tablaali.ajax.reload();
 });
+
+
+
+
+
 
 
 $('#4-3-3').click(function() {
@@ -355,7 +359,7 @@ $('#4-3-3').click(function() {
         },
         complete: {}
     });
-
+            Tablaali.ajax.reload();
 });
 
 
@@ -401,7 +405,7 @@ $('#3-4-3').click(function() {
         },
         complete: {}
     });
-
+            Tablaali.ajax.reload();
 });
 
 
@@ -447,7 +451,7 @@ $('#3-5-2').click(function() {
         },
         complete: {}
     });
-
+            Tablaali.ajax.reload();
 });
 
 
@@ -494,7 +498,7 @@ $('#4-5-1').click(function() {
         complete: {}
     });
 
-
+            Tablaali.ajax.reload();
 });
 
 $('#5-3-2').click(function() {
@@ -539,7 +543,7 @@ $('#5-3-2').click(function() {
         },
         complete: {}
     });
-
+            Tablaali.ajax.reload();
 });
 
 $('#5-4-1').click(function() {
@@ -585,5 +589,6 @@ $('#5-4-1').click(function() {
         complete: {}
     });
 
-
+            Tablaali.ajax.reload();
+});
 });

@@ -18,9 +18,11 @@ if (!mysql_select_db($gaSql['db'], $gaSql['link'])) {
 mysql_query('SET names utf8');
 
 $id = $_POST["idJugador"];
+$precio = $_POST["precio"];
 //$id=9;
 
-$query = "UPDATE Jugadores SET Vendible = 'Si' WHERE idJugadores = '" . $id . "'";
+$query = "UPDATE Jugadores SET Vendible = 'Si', 
+            ValorMercado = '" . $precio . "' WHERE idJugadores = '" . $id . "'";
 
 $query_res = mysql_query($query);
 

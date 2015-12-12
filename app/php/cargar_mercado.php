@@ -1,7 +1,7 @@
 <?php
  header('Access-Control-Allow-Origin: *');
 
-$table = 'Jugadores';
+$table = 'mercado';
  
 
 $primaryKey = 'idJugadores';
@@ -13,8 +13,9 @@ $columns = array(
     array( 'db' => 'Valor',   'dt' => 'Valor' ),
     array( 'db' => 'EquipoReal',     'dt' => 'Equipo' ),
     array( 'db' => 'Posicion',     'dt' => 'Posicion' ),
-    array( 'db' => 'PuntosJornada',  'dt' => 'Puntosjornada' ),
-    array( 'db' => 'PuntosTotales',   'dt' => 'Puntostotales' )
+    array( 'db' => 'NombreUsuario',  'dt' => 'Usuario' ),
+    array( 'db' => 'PuntosTotales',   'dt' => 'Puntostotales' ),
+    array( 'db' => 'ValorMercado',   'dt' => 'Precio' )
 );
  
 

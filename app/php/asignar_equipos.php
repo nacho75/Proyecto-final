@@ -1,33 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 
-
-include_once"BDpdo.php";
-
-
-$conexion=conectar();
-
-
-$nombre=$_POST['usuario'];
-$pass=$_POST['password'];
-$email=$_POST['email'];
-$equipo=$_POST['equipo'];
-$saldo=20000000;
-$alineacion="4-4-2";
-
-
-
-$consulta2 = "INSERT INTO `EquiposUsuarios`(`NombreUsuario`, `Password`, `Email`,`NombreEquipo`,`saldo`,`Alineacion`) VALUES (\"$nombre\",\"$pass\",\"$email\",\"$equipo\",\"$saldo\",\"$alineacion\")";
-$query2 = $conexion->prepare($consulta2);
-$query2->bindParam(":usuario", $nombre);
-$query2->bindParam(":password", $pass);
-$query2->bindParam(":email", $email);
-$query2->bindParam(":equipo", $equipo);
-$query2->bindParam(":saldo", $saldo);
-$query2->bindParam(":alineacion", $alineacion);
-$query2->execute();
-echo "<script type=\"text/javascript\">alert(\"El usuario se registro correctamente\");window.location.href=\"../inicio.html\"</script>";
-
 include("BD.php" );
 
 
@@ -46,6 +19,9 @@ if (!mysql_select_db($gaSql['db'], $gaSql['link'])) {
 
 
 mysql_query('SET names utf8');
+
+//iniciar sesiones
+$nombre="pepe";
 
 $sQuery = "SELECT idEquiposUsuarios FROM EquiposUsuarios WHERE NombreUsuario = '" . $nombre."'";
 $rResult = mysql_query($sQuery, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
@@ -117,23 +93,26 @@ $delanterosrand=array_rand($delanteros,3);
 
 foreach ($delanterosrand as $var4) {
 	$query4 = "UPDATE Jugadores SET idEquiposUsuarios = '" . $id . "' WHERE idJugadores = '" . $delanteros[$var4]."'";
+	echo "$query4";
 	$query_res4 = mysql_query($query4);  
 }
 
-$sQuery6 = "SELECT SUM(Valor) FROM Jugadores WHERE idEquiposUsuarios = '" . $id . "'";
-$rResult6 = mysql_query($sQuery6, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
-
-while ($fila6 = mysql_fetch_array($rResult6)) {
-    $resultado6[] = array(
-      $valor = $fila6['SUM(Valor)']
-   );
- }
-
- $query = "UPDATE EquiposUsuarios SET  
-            Valor = '" . $valor . "' 
-            WHERE idEquiposUsuarios = '" . $id."'";
+if ($query_res4) {
+    
+    $mensaje = "Actualización correcta";
+    $estado = 0;
+} else {
+    $mensaje  = 'Error en la consulta: ' . mysql_error() ;
+    $estado = mysql_errno();
+}
 
 
-$query_res = mysql_query($query);
+$resultado = array();
+ $resultado[] = array(
+      'mensaje' => $mensaje,
+      'estado' => $estado
+);
 
+ 
+echo json_encode($resultado);
 ?>

@@ -22,7 +22,7 @@ mysql_query('SET names utf8');
 
 
 //$nombreusuario = $_POST["NombreUsuario"];
-$nombreusuario = "Nacho";
+$nombreusuario = "pepe";
 
 
 $sQuery = "SELECT Alineacion FROM EquiposUsuarios WHERE NombreUsuario = '" . $nombreusuario."'";

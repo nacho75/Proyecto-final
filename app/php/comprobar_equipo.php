@@ -20,33 +20,16 @@ if (!mysql_select_db($gaSql['db'], $gaSql['link'])) {
 
 mysql_query('SET names utf8');
 
-
-//$nombreusuario = $_POST["NombreUsuario"];
 $nombreusuario = "pepe";
-$tactica = $_POST["tactica"];
 
+$sQuery = "SELECT idJugadores,Alineacion FROM EquiposUsuarios,Jugadores WHERE EquiposUsuarios.idEquiposUsuarios=Jugadores.idEquiposUsuarios AND NombreUsuario = '" . $nombreusuario."' AND Alineado='Si'";
+$rResult = mysql_query($sQuery, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
 
-$query = "UPDATE EquiposUsuarios SET 
-            Alineacion = '" . $tactica . "' 
-            WHERE NombreUsuario = '" . $nombreusuario."'";
-
-
-$query_res = mysql_query($query);
-
-/*$query2 = "UPDATE Jugadores,EquiposUsuarios SET 
-            Alineado = 'No' 
-            WHERE Jugadores.idEquiposUsuarios=EquiposUsuarios.idEquiposUsuarios AND NombreUsuario = '" . $nombreusuario."'";
-
-
-$query_res2 = mysql_query($query2);*/
-
-if (!$query_res) {
-    $mensaje  = 'Error en la consulta: ' . mysql_error() ;
-    $estado = mysql_errno();
-    
-} else {
-    $mensaje = "Actualización correcta";
-    $estado = 0;
+while ($fila = mysql_fetch_array($rResult)) {
+    $resultado[] = array(
+      $numjugali[] = $fila['idJugadores'],
+      $tactica = $fila['Alineacion']
+   );
 }
 
 if ($tactica=="4-4-2") {
@@ -155,13 +138,4 @@ while ($fila5 = mysql_fetch_array($rResult5)) {
         }
     }
 
-
-$resultado = array();
- $resultado[] = array(
-      'mensaje' => $mensaje,
-      'estado' => $estado
-);
-
-
-echo json_encode($resultado);
 ?>

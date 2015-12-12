@@ -19,7 +19,7 @@ $columns = array(
     array( 'db' => 'NombreUsuario',   'dt' => 'NombreUsuario' )
 );
 
-$usuario="Nacho";
+$usuario="pepe";
 
 
 $sql_details = array(
