@@ -1,9 +1,9 @@
-var idJugadores;
+var idpuja;
    $(document).ready(function() {
-       var mercado = $('#mercado').DataTable({
+       var ofertas = $('#ofertas').DataTable({
            'processing': true,
            'serverSide': true,
-           'ajax': 'php/cargar_mercado.php',
+           'ajax': 'php/cargar_ofertas_realizadas.php',
                     "order": [[ 6, "desc" ]],
            'language': {
                'sProcessing': 'Procesando...',
@@ -42,31 +42,42 @@ var idJugadores;
            }, {
                'data': 'Puntostotales'
            }, {
-               'data': 'Usuario'
+               'data': 'Usuario',
+                "visible": false
            }, {
                'data': 'idJugadores',
+                "visible": false
+           }, {
+               'data': 'Propietarios'
+           }, {
+               'data': 'Puja'
+           }, {
+               'data': 'idpuja',
                'render': function(data) {
-                    return '<a data-toggle="modal" data-target="#basicModal" class="btn btn-primary pujar" >Pujar</a>';
+                    return '<a data-toggle="modal" data-target="#basicModal" class="btn btn-primary modificar" >Modificar</a><a data-toggle="modal" data-target="#basicModal2" class="btn btn-primary eliminar" >Eliminar</a>';
             }
            }]
        });
-    $('#mercado').on('click', '.pujar', function(e) {
+    
+    $('#ofertas').on('click', '.modificar', function(e) {
         var nRow = $(this).parents('tr')[0];
-        var aData = mercado.row(nRow).data();
+        var aData = ofertas.row(nRow).data();
+        idpuja = aData.idpuja;
+        Propietarios = aData.Propietarios;
         idJugador = aData.idJugadores;
-        usuario = aData.Usuario;
     });
 
-    $('#basicModal').on('click', '#confpujar', function(e) {
+    $('#basicModal').on('click', '#confmodificar', function(e) {
             var precio = $('#preciopuja').val();
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
-                url: 'php/pujar.php',
+                url: 'php/modificar_puja.php',
                 data: {
-                    idJugador: idJugador,
+                    idpuja: idpuja,
                     precio: precio,
-                    usuario: usuario
+                    Propietarios: Propietarios,
+                    idJugador: idJugador
                 },
                 error: function(xhr, status, error) {
                     $.growl({
@@ -96,5 +107,44 @@ var idJugadores;
                 },
                 complete: {}
             });
+      ofertas.ajax.reload();
     });
+$('#ofertas').on('click', '.eliminar', function(e) {
+           var nRow = $(this).parents('tr')[0];
+           var aData = ofertas.row(nRow).data();
+            idpuja = aData.idpuja;
+       });
+
+       $('#basicModal2').on('click', '#confBorrar', function(e) {
+           $.ajax({
+               type: 'POST',
+               dataType: 'json',
+               url: 'php/eliminar_puja.php',
+               data: {
+                   idpuja: idpuja
+               },
+               error: function(xhr, status, error) {
+                   $.growl({
+
+                       icon: "glyphicon glyphicon-remove",
+                       message: "Error al borrar!"
+
+                   }, {
+                       type: "danger"
+                   });
+               },
+               success: function(data) {
+                   $.growl({
+
+                       icon: "glyphicon glyphicon-ok",
+                       message: "Borrado realizado con exito!"
+
+                   }, {
+                       type: "success"
+                   });
+               },
+               complete: {}
+           });
+      ofertas.ajax.reload();
+       });
 });

@@ -26,12 +26,12 @@ $posicion = $_POST["posicionNuevo"];
 $idequipo = 1;
 
 
-$query1 = "insert into Jugadores (Nombre,EquipoReal,Valor,Posicion,idEquiposUsuarios) values( 
+$query1 = "insert into Jugadores (Nombre,EquipoReal,Valor,Posicion,idEquiposUsuarios,Vendible,Alineado,PuntosJornada,PuntosTotales,ValorMercado) values( 
              '". $nombre . "', 
             '" . $equipo . "', 
             '" . $valor . "', 
             '" . $posicion . "', 
-            '" . $idequipo . "')" ;
+            '" . $idequipo . "', 'No', 'No', 0, 0, 0)" ;
 $query_res1 = mysql_query($query1);
 
 

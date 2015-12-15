@@ -82,7 +82,7 @@ require("php/sesiones.php");
             </div>
             <div id="tabla" class="row">
                 <div class="col-md-12">
-                    <table id="mercado" class="table stripe">
+                    <table id="ofertas" class="table stripe">
                         <thead>
                             <th>Nombre</th>
                             <th>Posicion</th>
@@ -91,6 +91,9 @@ require("php/sesiones.php");
                             <th>Precio</th>
                             <th>Puntos totales</th>
                             <th>Usuario</th>
+                            <th>idjug</th>
+                            <th>Propietario</th>
+                            <th>Puja</th>
                             <th>Opciones</th>
                         </thead>
                         <tbody>
@@ -109,11 +112,28 @@ require("php/sesiones.php");
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" id="confpujar" name="confpujar" data-dismiss="modal" class="btn btn-primary">Pujar</button>
+                            <button type="submit" id="confmodificar" name="confmodificar" data-dismiss="modal" class="btn btn-primary">Modificar</button>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="basicModal2" name="basicModal2" tabindex="-1" role="dialog" aria-labelledby="basicModal2" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Eliminar puja</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h3>¿Desea eliminar la puja?</h3>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" id="confBorrar" name="confBorrar" data-dismiss="modal" class="btn btn-primary aceptarBorrado">Si</button>
+                    </div>
+
+                </div>
+            </div>
+</div>
             <div class="footer">
             </div>
         </div>
@@ -142,7 +162,7 @@ require("php/sesiones.php");
         <!-- build:js scripts/main.js -->
         <script src="scripts/jquery.dataTables.js"></script>
         <script src="scripts/dataTables.bootstrap.js"></script>
-        <script src="scripts/mercado.js"></script>
+        <script src="scripts/ofertas_realizadas.js"></script>
         <!-- endbuild -->
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

@@ -152,6 +152,22 @@ body {
     margin-right: 5px;
 }
 
+.modificar {
+    margin-right: 5px;
+}
+
+.eliminar {
+    margin-right: 5px;
+}
+
+.aceptar {
+    margin-right: 5px;
+}
+
+.rechazar {
+    margin-right: 5px;
+}
+
 .campo {
     margin: 0 auto;
     background-image: url(../images/campo.png);

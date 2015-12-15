@@ -137,7 +137,7 @@ var idJugadores;
                            $.growl({
 
                                icon: "glyphicon glyphicon-remove",
-                               message: "Error al añadir el jugador!"
+                               message: "Error al añadir el jugadorrr!"
 
                            }, {
                                type: "danger"
