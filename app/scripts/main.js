@@ -344,3 +344,32 @@ $('#resetearpuntos').click(function(e) {
            });
            location.reload();
        });
+
+$('#reafic').click(function(e) {
+ $.ajax({
+               type: 'POST',
+               dataType: 'json',
+               url: 'php/realizar_fichajes.php',
+               error: function(xhr, status, error) {
+                   $.growl({
+                       icon: "glyphicon glyphicon-remove",
+                       message: "Error al realizar los fichajes!"
+                   }, {
+                       type: "danger"
+                   });
+               },
+               success: function(data) {
+                   $.growl({
+                       icon: "glyphicon glyphicon-ok",
+                       message: "Realización de fichajes realizado con éxito!"
+                   }, {
+                       type: "success"
+                   });
+               },
+               complete: {}
+           });
+           location.reload();
+       });
+
+
+

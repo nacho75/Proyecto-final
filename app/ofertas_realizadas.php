@@ -29,60 +29,60 @@ require("php/sesiones.php");
     <![endif]-->
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!--<a href="administrador.html"><img class="navbar-brand" src="images/logo.png" alt="logo Football Fantasy">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!--<a href="administrador.html"><img class="navbar-brand" src="images/logo.png" alt="logo Football Fantasy">
                 </a>-->
-                <a class="navbar-brand" href="administrador.html">
-                    <span id="logo">Football Fantasy</span>
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="administrador.html">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="#">Alineación</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clasificación
+            <a class="navbar-brand" href="alineacion.php">
+                <span id="logo">Football Fantasy</span>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse header">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="alineacion.php">Alineación</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clasificación
                             <b class="caret"></b>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">Ultima jornada</a>
-                            </li>
-                            <li>
-                                <a href="#">Total</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mercado de fichajes
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="clasificacion_ultjor.php">Ultima jornada</a>
+                        </li>
+                        <li>
+                            <a href="clasificacion_total.php">Total</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="mercado.php" class="dropdown-toggle" data-toggle="dropdown">Mercado de fichajes
                         <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">Ofertas recibidas</a>
-                            </li>
-                            <li>
-                                <a href="#">Ofertas realizadas</a>
-                            </li>
-                        </ul>
+                    <ul class="dropdown-menu">
+                    <li>
+                            <a href="mercado.php">Mercado</a>
+                        </li>
+                        <li>
+                            <a href="ofertas_recibidas.php">Ofertas recibidas</a>
+                        </li>
+                        <li>
+                            <a href="ofertas_realizadas.php">Ofertas realizadas</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="php/salir.php">Salir</a>
                     </li>
                 </ul>
-                <!--<ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="">Contacto</a>
-                    </li>
-                </ul>-->
-            </div>
+        </div>
             <div id="tabla" class="row">
                 <div class="col-md-12">
-                    <table id="ofertasrec" class="table stripe">
+                    <table id="ofertas" class="table stripe">
                         <thead>
                             <th>Nombre</th>
                             <th>Posicion</th>
@@ -103,17 +103,17 @@ require("php/sesiones.php");
             </div>
             <div class="modal fade" id="basicModal" name="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                 <div class="modal-dialog">
-                   <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Aceptar oferta</h4>
-                    </div>
-                    <div class="modal-body">
-                        <h3>¿Desea aceptar la oferta?</h3>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" id="confaceptar" name="confaceptar" data-dismiss="modal" class="btn btn-primary aceptaroferta">Si</button>
-                    </div>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Puja:</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" id="preciopuja" data-tabindex="1">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" id="confmodificar" name="confmodificar" data-dismiss="modal" class="btn btn-primary">Modificar</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -121,14 +121,14 @@ require("php/sesiones.php");
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Rechazar oferta</h4>
+                        <h4 class="modal-title" id="myModalLabel">Eliminar puja</h4>
                     </div>
                     <div class="modal-body">
-                        <h3>¿Desea rechazar la oferta?</h3>
+                        <h3>¿Desea eliminar la puja?</h3>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" id="confBorrar" name="confBorrar" data-dismiss="modal" class="btn btn-primary rechazaroferta">Si</button>
+                        <button type="submit" id="confBorrar" name="confBorrar" data-dismiss="modal" class="btn btn-primary aceptarBorrado">Si</button>
                     </div>
 
                 </div>
@@ -162,7 +162,7 @@ require("php/sesiones.php");
         <!-- build:js scripts/main.js -->
         <script src="scripts/jquery.dataTables.js"></script>
         <script src="scripts/dataTables.bootstrap.js"></script>
-        <script src="scripts/ofertas_recibidas.js"></script>
+        <script src="scripts/ofertas_realizadas.js"></script>
         <!-- endbuild -->
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

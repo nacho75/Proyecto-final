@@ -21,7 +21,7 @@ if (!mysql_select_db($gaSql['db'], $gaSql['link'])) {
 mysql_query('SET names utf8');
 
 //sesiones
-$vendedor = "Josemi";
+$vendedor = "Pepe";
 
 $idjugador = $_POST["idjugador"];
 $comprador = $_POST["usuario"];

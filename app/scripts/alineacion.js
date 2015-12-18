@@ -34,9 +34,9 @@ $(document).ready(function() {
         'columns': [{
             'data': 'Posicion'
         }, {
-            'data': 'EquipoReal'
-        }, {
             'data': 'Nombre'
+        }, {
+            'data': 'EquipoReal'
         }, {
             'data': 'PuntosTotales'
         }, {

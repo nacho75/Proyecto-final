@@ -29,57 +29,57 @@ require("php/sesiones.php");
     <![endif]-->
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!--<a href="administrador.html"><img class="navbar-brand" src="images/logo.png" alt="logo Football Fantasy">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!--<a href="administrador.html"><img class="navbar-brand" src="images/logo.png" alt="logo Football Fantasy">
                 </a>-->
-                <a class="navbar-brand" href="administrador.html">
-                    <span id="logo">Football Fantasy</span>
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="administrador.html">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="#">Alineación</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clasificación
+            <a class="navbar-brand" href="alineacion.php">
+                <span id="logo">Football Fantasy</span>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse header">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="alineacion.php">Alineación</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clasificación
                             <b class="caret"></b>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">Ultima jornada</a>
-                            </li>
-                            <li>
-                                <a href="#">Total</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mercado de fichajes
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="clasificacion_ultjor.php">Ultima jornada</a>
+                        </li>
+                        <li>
+                            <a href="clasificacion_total.php">Total</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="mercado.php" class="dropdown-toggle" data-toggle="dropdown">Mercado de fichajes
                         <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">Ofertas recibidas</a>
-                            </li>
-                            <li>
-                                <a href="#">Ofertas realizadas</a>
-                            </li>
-                        </ul>
+                    <ul class="dropdown-menu">
+                    <li>
+                            <a href="mercado.php">Mercado</a>
+                        </li>
+                        <li>
+                            <a href="ofertas_recibidas.php">Ofertas recibidas</a>
+                        </li>
+                        <li>
+                            <a href="ofertas_realizadas.php">Ofertas realizadas</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="php/salir.php">Salir</a>
                     </li>
                 </ul>
-                <!--<ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="">Contacto</a>
-                    </li>
-                </ul>-->
-            </div>
+        </div>
             <div id="tabla" class="row">
                 <div class="col-md-12">
                     <table id="mercado" class="table stripe">

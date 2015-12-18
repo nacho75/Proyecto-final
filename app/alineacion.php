@@ -1,11 +1,6 @@
-
 <?php
- session_start();
- if (!isset($_SESSION['usuarios'])) {
-    header("Location: index.html");
-         }
+require("php/sesiones.php");
 ?>
-
 <!doctype html>
 <html lang="es">
 
@@ -41,17 +36,14 @@
             </button>
             <!--<a href="administrador.html"><img class="navbar-brand" src="images/logo.png" alt="logo Football Fantasy">
                 </a>-->
-            <a class="navbar-brand" href="administrador.html">
+            <a class="navbar-brand" href="alineacion.php">
                 <span id="logo">Football Fantasy</span>
             </a>
         </div>
         <div class="navbar-collapse collapse header">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="administrador.html">Inicio</a>
-                </li>
-                <li>
-                    <a href="#">Alineación</a>
+                    <a href="alineacion.php">Alineación</a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clasificación
@@ -59,22 +51,25 @@
                         </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#">Ultima jornada</a>
+                            <a href="clasificacion_ultjor.php">Ultima jornada</a>
                         </li>
                         <li>
-                            <a href="#">Total</a>
+                            <a href="clasificacion_total.php">Total</a>
                         </li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mercado de fichajes
+                    <a href="mercado.php" class="dropdown-toggle" data-toggle="dropdown">Mercado de fichajes
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">Vender jugadores</a>
+                    <li>
+                            <a href="mercado.php">Mercado</a>
                         </li>
                         <li>
-                            <a href="#">Comprar jugadores</a>
+                            <a href="ofertas_recibidas.php">Ofertas recibidas</a>
+                        </li>
+                        <li>
+                            <a href="ofertas_realizadas.php">Ofertas realizadas</a>
                         </li>
                     </ul>
                 </li>

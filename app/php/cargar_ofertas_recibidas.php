@@ -1,7 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 //include("comprobar_jugador.php" );
-$id=2;
+$id=8;
 $table = 'ofertas';
 
 $primaryKey = 'idJugadores';
