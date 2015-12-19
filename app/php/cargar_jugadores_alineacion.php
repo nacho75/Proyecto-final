@@ -19,8 +19,8 @@ $columns = array(
     array( 'db' => 'NombreUsuario',   'dt' => 'NombreUsuario' )
 );
 
-$usuario="pepe";
-
+session_start();
+$usuario=$_SESSION['usuarios'];
 
 $sql_details = array(
     'user' => 'root',

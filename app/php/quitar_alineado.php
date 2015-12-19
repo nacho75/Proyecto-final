@@ -18,7 +18,6 @@ if (!mysql_select_db($gaSql['db'], $gaSql['link'])) {
 mysql_query('SET names utf8');
 
 $id = $_POST["idJugador"];
-//$id=9;
 
 $query = "UPDATE Jugadores SET Alineado = 'No' WHERE idJugadores = '" . $id . "'";
 

@@ -17,15 +17,13 @@ if (!mysql_select_db($gaSql['db'], $gaSql['link'])) {
 
 mysql_query('SET names utf8');
 
-//pujante sera el nombre de las session
-$pujante = "pepe";
+
+session_start();
+$pujante=$_SESSION['usuarios'];
 $idjugador = $_POST["idJugador"];
-//$idjugador = 18;
 $precio = $_POST["precio"];
-//$precio = 200;
 $dueno = $_POST["usuario"];
-//echo "$dueno <br>";
-//INSERT INTO `Pujas`(`Puja`, `idEquiposUsuarios`, `idJugadores`) VALUES ([value-1],[value-2],[value-3])
+
 $sQuery1 = "SELECT idEquiposUsuarios FROM EquiposUsuarios WHERE NombreUsuario = '" . $pujante."'";
 $rResult1 = mysql_query($sQuery1, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
 
@@ -44,7 +42,7 @@ if ($dueno == "admin") {
 	      $valor = $fila2['Valor']
 	   );
 	}
-//echo "$valor <br>";
+
 	if ($precio < $valor) {
 		$mensaje = "Error precio";
 	} else {

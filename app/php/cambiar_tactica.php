@@ -21,8 +21,8 @@ if (!mysql_select_db($gaSql['db'], $gaSql['link'])) {
 mysql_query('SET names utf8');
 
 
-//$nombreusuario = $_POST["NombreUsuario"];
-$nombreusuario = "pepe";
+session_start();
+$nombreusuario=$_SESSION['usuarios'];
 $tactica = $_POST["tactica"];
 
 
@@ -32,13 +32,6 @@ $query = "UPDATE EquiposUsuarios SET
 
 
 $query_res = mysql_query($query);
-
-/*$query2 = "UPDATE Jugadores,EquiposUsuarios SET 
-            Alineado = 'No' 
-            WHERE Jugadores.idEquiposUsuarios=EquiposUsuarios.idEquiposUsuarios AND NombreUsuario = '" . $nombreusuario."'";
-
-
-$query_res2 = mysql_query($query2);*/
 
 if (!$query_res) {
     $mensaje  = 'Error en la consulta: ' . mysql_error() ;

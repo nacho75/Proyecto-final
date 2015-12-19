@@ -21,7 +21,8 @@ $columns = array(
     array( 'db' => 'Propietarios',   'dt' => 'Propietarios' )
 );
  
-$usuario="pepe";
+session_start();
+$usuario=$_SESSION['usuarios'];
 
 
 $sql_details = array(

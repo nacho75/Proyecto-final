@@ -19,7 +19,6 @@ mysql_query('SET names utf8');
 
 $id = $_POST["idJugador"];
 $precio = $_POST["precio"];
-//$id=9;
 
 $query = "UPDATE Jugadores SET Vendible = 'Si', 
             ValorMercado = '" . $precio . "' WHERE idJugadores = '" . $id . "'";

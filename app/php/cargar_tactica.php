@@ -21,8 +21,8 @@ if (!mysql_select_db($gaSql['db'], $gaSql['link'])) {
 mysql_query('SET names utf8');
 
 
-//$nombreusuario = $_POST["NombreUsuario"];
-$nombreusuario = "pepe";
+session_start();
+$nombreusuario=$_SESSION['usuarios'];
 
 
 $sQuery = "SELECT Alineacion FROM EquiposUsuarios WHERE NombreUsuario = '" . $nombreusuario."'";

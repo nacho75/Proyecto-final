@@ -20,7 +20,8 @@ if (!mysql_select_db($gaSql['db'], $gaSql['link'])) {
 
 mysql_query('SET names utf8');
 
-$nombreusuario = "pepe";
+session_start();
+$nombreusuario=$_SESSION['usuarios'];
 
 $sQuery = "SELECT idJugadores,Alineacion FROM EquiposUsuarios,Jugadores WHERE EquiposUsuarios.idEquiposUsuarios=Jugadores.idEquiposUsuarios AND NombreUsuario = '" . $nombreusuario."' AND Alineado='Si'";
 $rResult = mysql_query($sQuery, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());

@@ -21,12 +21,10 @@ if (!mysql_select_db($gaSql['db'], $gaSql['link'])) {
 mysql_query('SET names utf8');
 
 
-//$nombreusuario = $_POST["NombreUsuario"];
-$nombreusuario = "pepe";
+session_start();
+$nombreusuario=$_SESSION['usuarios'];
 $id = $_POST["idJugador"];
-//$id=10;
 $posicion = $_POST["Posicion"];
-//$posicion="Portero";
 
 $sQuery1 = "SELECT Alineacion FROM EquiposUsuarios WHERE NombreUsuario = '" . $nombreusuario."'";
 $rResult1 = mysql_query($sQuery1, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
@@ -138,6 +136,6 @@ $resultado = array();
       'mensaje' => $mensaje,
       'estado' => $estado
 );
- //print_r($resultado);
+
 echo json_encode($resultado);
 ?>

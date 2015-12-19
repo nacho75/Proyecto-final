@@ -26,27 +26,23 @@
 
     
     <div class="container-fluid">
-      <div class="header">
-        <h3 class="text-muted">Comunio</h3>
-      </div>
 
-      <div class="form-box">
+<div class="card card-container">
+<img id="profile-img" class="profile-img-card" src="images/logo.png" />
+            <p id="profile-name" class="profile-name-card">Registro</p>
+      <div class="form-box" id="formularioregistro">
                 <form action="php/registro.php" id="formregistro" method="post">
-                	Introduce el usuario
-                    <input name="usuario" id="usuario" type="text" placeholder="Usuario"></br>
-                    Introduce el nombre del equipo
-                    <input name="equipo" id="equipo" type="text" placeholder="Nombre del equipo"></br>
-                    Introduce el Email
-                    <input type="email" name="email" id="email" placeholder="Email"></br>
-                    Introduce la contraseña
-                    <input type="password" name="password" id="password" placeholder="Contraseña"></br>
-                    <button class="btn btn-info login" id="registrarse" name="registrarse" type="submit">Registrarse</button>
+                    <input name="usuario" id="usuario" type="text" placeholder="Usuario">
+                    <input name="equipo" id="equipo" type="text" placeholder="Nombre del equipo">
+                    <input type="email" name="email" id="email" placeholder="Email">
+                    <input type="password" name="password" id="password" placeholder="Contraseña">
+                    <div>
+                    <button class="btn btn-info login botreg" id="registrarse" name="registrarse" type="submit">Registrarse</button>
+                    </div>
                 </form>
       </div>
+</div>
 
-      <div class="footer">
-        
-      </div>
     </div>
     
 

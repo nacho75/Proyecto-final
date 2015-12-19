@@ -34,10 +34,10 @@ require("php/sesiones.php");
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <!--<a href="administrador.html"><img class="navbar-brand" src="images/logo.png" alt="logo Football Fantasy">
-                </a>-->
-            <a class="navbar-brand" href="alineacion.php">
-                <span id="logo">Football Fantasy</span>
+            <a href="alineacion.php"><img class="navbar-brand logo" src="images/logo.png" alt="logo Football Fantasy">
+                </a>
+            <a class="navbar-brand logolet" href="alineacion.php">
+                Football Fantasy
             </a>
         </div>
         <div class="navbar-collapse collapse header">
@@ -134,8 +134,14 @@ require("php/sesiones.php");
                 </div>
             </div>
 </div>
-            <div class="footer">
-            </div>
+           <div class="footer pie">
+        <div id="izq">
+            Ignacio Martínez de Zabarte © 2015
+        </div>
+            <!--<div id="der">
+                Av. de Movera, nº 352 · imartinezdezabarte@gmail.com
+            </div>-->
+        </div>
         </div>
         <!-- build:js(.) scripts/vendor.js -->
         <!-- bower:js -->
