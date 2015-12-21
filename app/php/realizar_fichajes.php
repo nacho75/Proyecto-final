@@ -52,17 +52,28 @@ foreach ($idmercado as $var2) {
         $saldo="";
         $saldonuevo="";
 
-        $sQuery4 = "SELECT Saldo FROM EquiposUsuarios WHERE idEquiposUsuarios = '" . $equipofic . "'";
+        $sQuery4a = "SELECT Valor FROM Jugadores WHERE idJugadores = '" . $var2 ."'";
+        $rResult4a = mysql_query($sQuery4a, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
+
+        while ($fila4a = mysql_fetch_array($rResult4a)) {
+            $resultado4a[] = array(
+              $valorjug = $fila4a['Valor']
+           );
+        }
+
+        $sQuery4 = "SELECT Saldo,Valor FROM EquiposUsuarios WHERE idEquiposUsuarios = '" . $equipofic . "'";
         $rResult4 = mysql_query($sQuery4, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
 
         while ($fila4 = mysql_fetch_array($rResult4)) {
             $resultado4[] = array(
-              $saldo = $fila4['Saldo']
+              $saldo = $fila4['Saldo'],
+              $valoreq = $fila4['Valor'],
            );
         }
         $saldonuevo=$saldo-$puja;
+        $valornuevo=$valoreq+$valorjug;
 
-        $query3 = "UPDATE EquiposUsuarios SET Saldo = '" . $saldonuevo . "' WHERE idEquiposUsuarios = '" . $equipofic . "'";
+        $query3 = "UPDATE EquiposUsuarios SET Saldo = '" . $saldonuevo . "', Valor = '" . $valornuevo . "' WHERE idEquiposUsuarios = '" . $equipofic . "'";
         $query_res3 = mysql_query($query3);
 
         $query5 = "delete from Pujas where idJugadores=" . $var2;
@@ -80,13 +91,26 @@ while ($fila5 = mysql_fetch_array($rResult5)) {
    );
 }
 
+
 $i=count($idjug);
 for ($x=0; $x < $i; $x++) { 
-    //echo "$idjug[$x]";
-    $query4 = "INSERT INTO `Pujas`(`Puja`, `idEquiposUsuarios`, `idJugadores`) VALUES ('". $pujaadmin[$x] . "', 1, " . $idjug[$x] . ")" ;
+  $sQuery5a = "SELECT idpuja FROM Pujas WHERE idEquiposUsuarios=1 AND idJugadores = '" . $idjug[$x] ."'";
+$rResult5a = mysql_query($sQuery5a, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
+
+while ($fila5a = mysql_fetch_array($rResult5a)) {
+    $resultado5a[] = array(
+      $idpuja[] = $fila5a['idpuja']
+   );
+}
+$j=count($idpuja);
+if ($j>0) {
+  echo "Ya hay puja";
+} else {
+  $query4 = "INSERT INTO `Pujas`(`Puja`, `idEquiposUsuarios`, `idJugadores`) VALUES ('". $pujaadmin[$x] . "', 1, " . $idjug[$x] . ")" ;
     $query_res4 = mysql_query($query4);
 }
-
+    
+}
 
 $sQuery = "SELECT idJugadores,Valor FROM Jugadores WHERE idEquiposUsuarios=1";
 $rResult = mysql_query($sQuery, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
