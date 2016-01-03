@@ -93,7 +93,10 @@ body {
     }
     /* Space out the masthead */
     .header {
-        margin-bottom: 30px;
+        /*margin-bottom: 30px;*/
+    background-color: LightBlue;
+    padding-left: 25px;
+    padding-right: 20px;
     }
     /* Remove the bottom border on the jumbotron for visual effect */
     .jumbotron {
@@ -206,6 +209,13 @@ body {
     display: inline-block;
     color: #fff;
     margin: 0 4px;
+}
+
+.titulares2 {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    margin: 0 2px;
 }
 
 @media (max-width: 465px) {
@@ -480,4 +490,48 @@ body{
 
 #der{
   float: right;
+}
+
+.datos {
+    padding-top: 10px;
+    margin-bottom: 30px;
+    background-color: aliceblue;
+}
+
+.datos1{
+    float: left;
+}
+
+.datos2{
+    float: left;
+    padding-left: 10px;
+}
+
+.nav .open > a, .nav .open > a:hover{
+    background-color: aliceblue;
+}
+
+.nav .open > a:focus{
+    background-color: aliceblue;
+}
+
+.nav > li > a:hover{
+    background-color: aliceblue;
+}
+
+.nav > li > a:focus{
+    background-color: aliceblue;
+}
+
+.jugadortitnom{
+background: rgba(0,0,0,.3);
+text-shadow: 1px 1px #333;
+font-size: 11px;
+border-radius: 20px;
+line-height: 20px;
+color: #fff;
+text-align: center;
+text-overflow: ellipsis;
+overflow: hidden;
+white-space: nowrap;
 }

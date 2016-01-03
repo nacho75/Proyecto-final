@@ -48,7 +48,8 @@ var idpuja;
                'data': 'idJugadores',
                 "visible": false
            }, {
-               'data': 'Propietarios'
+               'data': 'Propietarios',
+                "visible": false
            }, {
                'data': 'Puja'
            }, {
@@ -65,6 +66,7 @@ var idpuja;
         idpuja = aData.idpuja;
         Propietarios = aData.Propietarios;
         idJugador = aData.idJugadores;
+        $('#preciopuja').val(aData.Puja);
     });
 
     $('#basicModal').on('click', '#confmodificar', function(e) {

@@ -44,10 +44,11 @@ foreach ($id as $var) {
 
     $puntos=0;
 
-    foreach ($punjor as $pun) {
-      $puntos += $pun;
+    if (is_array($punjor) || is_object($punjor)){
+      foreach ($punjor as $pun) {
+        $puntos += $pun;
+      }
     }
-
     $sQuery3 = "SELECT PuntosTotales,Saldo FROM EquiposUsuarios WHERE idEquiposUsuarios=" . $var;
     $rResult3 = mysql_query($sQuery3, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
 

@@ -1,12 +1,13 @@
 <?php
 require("php/sesiones.php");
+require("php/datos.php");
 ?>
 <!doctype html>
 <html lang="es">
 
 <head>
     <meta charset="utf-8">
-    <title>Comunio</title>
+    <title>Comunio .::. Alineación</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/favicon.ico">
@@ -27,8 +28,8 @@ require("php/sesiones.php");
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div class="container-fluid">
-        <div class="navbar-header">
+
+        <div class="navbar-header header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -80,6 +81,29 @@ require("php/sesiones.php");
                     </li>
                 </ul>
         </div>
+        <div class="navbar-collapse collapse header datos">
+        <div class="datos1">
+            <p>Usuario: 
+            <?php 
+                echo "$usuario";
+            ?></p>
+             <p>Saldo: 
+            <?php 
+                echo "$saldo";
+            ?></p>
+        </div>
+            <div class="datos2">
+            <p>Nombre equipo: 
+            <?php 
+                echo "$nombreeq";
+            ?></p>
+            <p>Valor del equipo: 
+            <?php 
+                echo "$valor";
+            ?></p> 
+            </div>
+        </div>
+            <div class="container-fluid">
         <div class="container">
             <div class="row">
                 <div class="botones">
@@ -98,58 +122,106 @@ require("php/sesiones.php");
                 <div class="campo">
                     <div class="lineadel">
                         <div class="titulares del1" id="del1">
-                            <img src="images/player.png" height="50" width="50" alt="">
+                            <img src="images/player.png" id="jugador1" height="50" width="50" alt="">
+                            <p id="jugador1nom" class="jugadortitnom">
+                                
+                            </p>
                         </div>
                         <div class="titulares del2">
-                            <img src="images/player.png" height="50" width="50" alt="">
+                            <img src="images/player.png" id="jugador2" height="50" width="50" alt="">
+                            <p id="jugador2nom" class="jugadortitnom">
+                                
+                            </p>
                         </div>
                         <div class="titulares del3">
-                            <img src="images/player.png" height="50" width="50" alt="">
+                            <img src="images/player.png" id="jugador3" height="50" width="50" alt="">
+                            <p id="jugador3nom" class="jugadortitnom">
+                                
+                            </p>
                         </div>
                         <div class="titulares del4">
-                            <img src="images/player.png" height="50" width="50" alt="">
+                            <img src="images/player.png" id="jugador4" height="50" width="50" alt="">
+                            <p id="jugador4nom" class="jugadortitnom">
+                                
+                            </p>
                         </div>
                         <div class="titulares del5">
-                            <img src="images/player.png" height="50" width="50" alt="">
+                            <img src="images/player.png" id="jugador5" height="50" width="50" alt="">
+                            <p id="jugador5nom" class="jugadortitnom">
+                                
+                            </p>
                         </div>
                     </div>
                     <div class="lineamed">
-                        <div class="titulares med1">
-                            <img src="images/player.png" height="50" width="50" alt="">
+                        <div class="titulares2 med1">
+                            <img src="images/player.png" id="jugador6" height="50" width="50" alt="">
+                            <p id="jugador6nom" class="jugadortitnom">
+                                
+                            </p>
                         </div>
                         <div class="titulares med2">
-                            <img src="images/player.png" height="50" width="50" alt="">
+                            <img src="images/player.png" id="jugador7" height="50" width="50" alt="">
+                            <p id="jugador7nom" class="jugadortitnom">
+                                
+                            </p>
                         </div>
                         <div class="titulares med3">
-                            <img src="images/player.png" height="50" width="50" alt="">
+                            <img src="images/player.png" id="jugador8" height="50" width="50" alt="">
+                            <p id="jugador8nom" class="jugadortitnom">
+                                
+                            </p>
                         </div>
                         <div class="titulares med4">
-                            <img src="images/player.png" height="50" width="50" alt="">
+                            <img src="images/player.png" id="jugador9" height="50" width="50" alt="">
+                            <p id="jugador9nom" class="jugadortitnom">
+                                
+                            </p>
                         </div>
                         <div class="titulares med5">
-                            <img src="images/player.png" height="50" width="50" alt="">
+                            <img src="images/player.png" id="jugador10" height="50" width="50" alt="">
+                            <p id="jugador10nom" class="jugadortitnom">
+                                
+                            </p>
                         </div>
                     </div>
                     <div class="lineadef">
                         <div class="titulares def1">
-                            <img src="images/player.png" height="50" width="50" alt="">
+                            <img src="images/player.png" id="jugador11" height="50" width="50" alt="">
+                            <p id="jugador11nom" class="jugadortitnom">
+                                
+                            </p>
                         </div>
                         <div class="titulares def2">
-                            <img src="images/player.png" height="50" width="50" alt="">
+                            <img src="images/player.png" id="jugador12" height="50" width="50" alt="">
+                            <p id="jugador12nom" class="jugadortitnom">
+                                
+                            </p>
                         </div>
                         <div class="titulares def3">
-                            <img src="images/player.png" height="50" width="50" alt="">
+                            <img src="images/player.png" id="jugador13" height="50" width="50" alt="">
+                            <p id="jugador13nom" class="jugadortitnom">
+                                
+                            </p>
                         </div>
                         <div class="titulares def4">
-                            <img src="images/player.png" height="50" width="50" alt="">
+                            <img src="images/player.png" id="jugador14" height="50" width="50" alt="">
+                            <p id="jugador14nom" class="jugadortitnom">
+                                
+                            </p>
                         </div>
                         <div class="titulares def5">
-                            <img src="images/player.png" height="50" width="50" alt="">
+                            <img src="images/player.png" id="jugador15" height="50" width="50" alt="">
+                            <p id="jugador15nom" class="jugadortitnom">
+                                
+                            </p>
                         </div>
                     </div>
                     <div class="lineapor">
                         <div class="titulares por">
-                            <img src="images/player.png" height="50" width="50" alt="">
+                            <img src="images/player.png" id="jugador16" height="50" width="50" alt="">
+                            <p id="jugador16nom" class="jugadortitnom">
+                                
+                            </p>
                         </div>
                     </div>
                 </div>

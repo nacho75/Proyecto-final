@@ -1,5 +1,6 @@
 <?php
 require("php/sesiones.php");
+require("php/datos.php");
 ?>
 <!doctype html>
 <html lang="es">
@@ -28,9 +29,8 @@ require("php/sesiones.php");
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    
-    <div class="container-fluid">
-           <div class="navbar-header">
+
+        <div class="navbar-header header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -82,6 +82,29 @@ require("php/sesiones.php");
                     </li>
                 </ul>
         </div>
+        <div class="navbar-collapse collapse header datos">
+        <div class="datos1">
+            <p>Usuario: 
+            <?php 
+                echo "$usuario";
+            ?></p>
+             <p>Saldo: 
+            <?php 
+                echo "$saldo";
+            ?></p>
+        </div>
+            <div class="datos2">
+            <p>Nombre equipo: 
+            <?php 
+                echo "$nombreeq";
+            ?></p>
+            <p>Valor del equipo: 
+            <?php 
+                echo "$valor";
+            ?></p> 
+            </div>
+        </div>
+            <div class="container-fluid">
 
       <div id="tabla" class="row">
             <div class="col-md-12">

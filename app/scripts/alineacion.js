@@ -6,6 +6,7 @@ $(document).ready(function() {
         'ajax': 'php/cargar_jugadores_alineacion.php',
         "paging": false,
         "searching": false,
+        "order": [[ 0, "Desc" ]],
         "info": false,
         'language': {
             'sProcessing': 'Procesando...',
@@ -56,20 +57,21 @@ $(document).ready(function() {
             'render': function(data) {
                 if (data == 'Si') {
                     return '<a class="btn btn-primary quiali" >Quitar del 11</a>';
+                    this.css({"background-color":"red"});
                 };
                 if (data == 'No') {
                     return '<a class="btn btn-primary ali">Alinear</a>';
                 };
             }
-        }, {
-            'data': 'Vendible',
-            'render': function(data) {
-                if (data == 'Si') {
-                    return '<a class="btn btn-primary quimer" >Quitar del mercado</a>';
-                };
-                if (data == 'No') {
-                    return '<a data-toggle="modal" data-target="#basicModal" class="btn btn-primary mer">Vender</a>';
-                };
+            }, {
+                'data': 'Vendible',
+                'render': function(data) {
+                    if (data == 'Si') {
+                        return '<a class="btn btn-primary quimer" >Quitar del mercado</a>';
+                    };
+                    if (data == 'No') {
+                        return '<a data-toggle="modal" data-target="#basicModal" class="btn btn-primary mer">Vender</a>';
+                    };
             }
         }]
     });
@@ -84,6 +86,1620 @@ $(document).ready(function() {
             }
         });
     }
+
+    function ponerimagenes() {
+                document.getElementById('jugador1').src = "images/player.png";
+                document.getElementById('jugador1nom').innerHTML = "";
+                document.getElementById('jugador2').src = "images/player.png";
+                document.getElementById('jugador2nom').innerHTML = "";
+                document.getElementById('jugador3').src = "images/player.png";
+                document.getElementById('jugador3nom').innerHTML = "";
+                document.getElementById('jugador4').src = "images/player.png";
+                document.getElementById('jugador4nom').innerHTML = "";
+                document.getElementById('jugador5').src = "images/player.png";
+                document.getElementById('jugador5nom').innerHTML = "";
+                document.getElementById('jugador6').src = "images/player.png";
+                document.getElementById('jugador6nom').innerHTML = "";
+                document.getElementById('jugador7').src = "images/player.png";
+                document.getElementById('jugador7nom').innerHTML = "";
+                document.getElementById('jugador8').src = "images/player.png";
+                document.getElementById('jugador8nom').innerHTML = "";
+                document.getElementById('jugador9').src = "images/player.png";
+                document.getElementById('jugador9nom').innerHTML = "";
+                document.getElementById('jugador10').src = "images/player.png";
+                document.getElementById('jugador10nom').innerHTML = "";
+                document.getElementById('jugador11').src = "images/player.png";
+                document.getElementById('jugador11nom').innerHTML = "";
+                document.getElementById('jugador12').src = "images/player.png";
+                document.getElementById('jugador12nom').innerHTML = "";
+                document.getElementById('jugador13').src = "images/player.png";
+                document.getElementById('jugador13nom').innerHTML = "";
+                document.getElementById('jugador14').src = "images/player.png";
+                document.getElementById('jugador14nom').innerHTML = "";
+                document.getElementById('jugador15').src = "images/player.png";
+                document.getElementById('jugador15nom').innerHTML = "";
+                document.getElementById('jugador16').src = "images/player.png";
+                document.getElementById('jugador16nom').innerHTML = "";
+    }
+
+    function loadjugadores() {
+        $.ajax({
+            type: "POST",
+            url: "php/cargar_jugadores_alineados.php",
+            dataType: "json",
+            success: function(data) {
+                var numeroalineados = data[0].nombre.length;
+                for (var i = 0; i < numeroalineados; i++) {
+                    if (data[0].posicion[i] == "Portero") {
+                        if (data[0].equipo[i] == "F.C.Barcelona") {
+                            document.getElementById('jugador16').src = "images/camisetas/cam_BAR.png";
+                            document.getElementById('jugador16nom').innerHTML = data[0].nombre[i];
+                        };
+                        if (data[0].equipo[i] == "At. Madrid") {
+                            document.getElementById('jugador16').src = "images/camisetas/cam_ATM.png";
+                            document.getElementById('jugador16nom').innerHTML = data[0].nombre[i];
+                        };
+                        if (data[0].equipo[i] == "Real Madrid") {
+                            document.getElementById('jugador16').src = "images/camisetas/cam_RMA.png";
+                            document.getElementById('jugador16nom').innerHTML = data[0].nombre[i];
+                        };
+                        if (data[0].equipo[i] == "Eibar") {
+                            document.getElementById('jugador16').src = "images/camisetas/cam_EIB.png";
+                            document.getElementById('jugador16nom').innerHTML = data[0].nombre[i];
+                        };
+                        if (data[0].equipo[i] == "At. Bilbao") {
+                            document.getElementById('jugador16').src = "images/camisetas/cam_ATH.png";
+                            document.getElementById('jugador16nom').innerHTML = data[0].nombre[i];
+                        };
+                    };
+                    if (data[0].posicion[i] == "Defensa") {
+                        if (data[0].alineacion == "5-3-2") {
+                            if (document.getElementById('jugador11').src == "http://localhost/Proyecto%20final/app/images/player.png") {
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador12').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador13').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador14').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador15').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                        if (data[0].alineacion == "5-4-1") {
+                            if (document.getElementById('jugador11').src == "http://localhost/Proyecto%20final/app/images/player.png") {
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador12').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador13').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador14').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador15').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                        if (data[0].alineacion == "4-4-2") {
+                            if (document.getElementById('jugador12').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador13').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador14').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador15').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+
+                        };
+                        if (data[0].alineacion == "4-3-3") {
+                            if (document.getElementById('jugador12').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador13').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador14').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador15').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+
+                        };
+                        if (data[0].alineacion == "4-5-1") {
+                            if (document.getElementById('jugador12').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador12').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador12nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador13').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador13').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador13nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador14').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador15').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+
+                        };
+                        if (data[0].alineacion == "3-4-3") {
+                            if (document.getElementById('jugador11').src == "http://localhost/Proyecto%20final/app/images/player.png") {
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador14').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador15').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                        if (data[0].alineacion == "3-5-2") {
+                            if (document.getElementById('jugador11').src == "http://localhost/Proyecto%20final/app/images/player.png") {
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador11').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador11nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador14').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador14').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador14nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador15').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador15').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador15nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                    };
+                    if (data[0].posicion[i] == "Centrocampista") {
+                        if (data[0].alineacion == "3-5-2") {
+                            if (document.getElementById('jugador6').src == "http://localhost/Proyecto%20final/app/images/player.png") {
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador7').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador8').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador9').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador10').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                        if (data[0].alineacion == "4-5-1") {
+                            if (document.getElementById('jugador6').src == "http://localhost/Proyecto%20final/app/images/player.png") {
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador7').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador8').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador9').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador10').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                        if (data[0].alineacion == "4-4-2") {
+                            if (document.getElementById('jugador7').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador8').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador9').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador10').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                        if (data[0].alineacion == "3-4-3") {
+                            if (document.getElementById('jugador7').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador8').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador9').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador10').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                        if (data[0].alineacion == "5-4-1") {
+                            if (document.getElementById('jugador7').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador7').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador7nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador8').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador8').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador8nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador9').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador10').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                        if (data[0].alineacion == "4-3-3") {
+                            if (document.getElementById('jugador6').src == "http://localhost/Proyecto%20final/app/images/player.png") {
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador9').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador10').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                        if (data[0].alineacion == "5-3-2") {
+                            if (document.getElementById('jugador6').src == "http://localhost/Proyecto%20final/app/images/player.png") {
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador6').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador6nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador9').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador9').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador9nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador10').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador10').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador10nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                    };
+                    if (data[0].posicion[i] == "Delantero") {
+                        if (data[0].alineacion == "4-3-3") {
+                            if (document.getElementById('jugador1').src == "http://localhost/Proyecto%20final/app/images/player.png") {
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador4').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador4').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador4nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador4').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador4nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador4').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador4nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador4').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador4nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador4').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador4nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador5').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador5').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador5nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador5').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador5nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador5').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador5nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador5').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador5nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador5').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador5nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                        if (data[0].alineacion == "3-4-3") {
+                            if (document.getElementById('jugador1').src == "http://localhost/Proyecto%20final/app/images/player.png") {
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador4').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador4').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador4nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador4').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador4nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador4').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador4nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador4').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador4nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador4').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador4nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador5').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador5').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador5nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador5').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador5nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador5').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador5nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador5').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador5nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador5').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador5nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                        if (data[0].alineacion == "4-4-2") {
+                            if (document.getElementById('jugador2').src == "http://localhost/Proyecto%20final/app/images/player.png") {
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador2').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador2nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador2').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador2nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador2').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador2nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador2').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador2nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador2').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador2nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador3').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador3').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador3nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador3').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador3nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador3').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador3nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador3').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador3nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador3').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador3nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                        if (data[0].alineacion == "5-3-2") {
+                            if (document.getElementById('jugador2').src == "http://localhost/Proyecto%20final/app/images/player.png") {
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador2').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador2nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador2').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador2nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador2').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador2nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador2').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador2nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador2').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador2nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador3').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador3').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador3nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador3').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador3nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador3').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador3nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador3').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador3nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador3').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador3nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                        if (data[0].alineacion == "3-5-2") {
+                            if (document.getElementById('jugador2').src == "http://localhost/Proyecto%20final/app/images/player.png") {
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador2').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador2nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador2').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador2nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador2').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador2nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador2').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador2nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador2').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador2nom').innerHTML = data[0].nombre[i];
+                                };
+                            } else if (document.getElementById('jugador3').src == "http://localhost/Proyecto%20final/app/images/player.png"){
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador3').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador3nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador3').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador3nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador3').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador3nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador3').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador3nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador3').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador3nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                        if (data[0].alineacion == "4-5-1") {
+                            if (document.getElementById('jugador1').src == "http://localhost/Proyecto%20final/app/images/player.png") {
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                        if (data[0].alineacion == "5-4-1") {
+                            if (document.getElementById('jugador1').src == "http://localhost/Proyecto%20final/app/images/player.png") {
+                                if (data[0].equipo[i] == "F.C.Barcelona") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_BAR.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Madrid") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_ATM.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Real Madrid") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_RMA.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "Eibar") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_EIB.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                                if (data[0].equipo[i] == "At. Bilbao") {
+                                    document.getElementById('jugador1').src = "images/camisetas/cam_ATH.png";
+                                    document.getElementById('jugador1nom').innerHTML = data[0].nombre[i];
+                                };
+                            }
+                        };
+                    };
+                };
+            }
+        });
+    }
+    
+    loadjugadores();
     function comprobar() {
         $.ajax({
             type: "POST",
@@ -147,6 +1763,8 @@ $(document).ready(function() {
             complete: {}
         });
         Tablaali.ajax.reload();
+        ponerimagenes();
+        loadjugadores();
     });
     $('#Tablaali').on('click', '.quiali', function(e) {
         e.preventDefault();
@@ -185,11 +1803,14 @@ $(document).ready(function() {
             complete: {}
         });
         Tablaali.ajax.reload();
+        ponerimagenes();
+        loadjugadores();
     });
     $('#Tablaali').on('click', '.mer', function(e) {
         var nRow = $(this).parents('tr')[0];
         var aData = Tablaali.row(nRow).data();
         idJugador = aData.idJugadores;
+        $('#precioventa').val(aData.Valor);
     });
 
     $('#basicModal').on('click', '#confvender', function(e) {
@@ -299,16 +1920,13 @@ $('#4-4-2').click(function() {
             });
         },
         success: function(data) {
-            /*$.growl({
-                icon: "glyphicon glyphicon-ok",
-                message: "Actualización de tactica con éxito!"
-            }, {
-                type: "success"
-            });*/
+            
         },
         complete: {}
     });
             Tablaali.ajax.reload();
+            ponerimagenes();
+            loadjugadores();
 });
 
 
@@ -350,16 +1968,13 @@ $('#4-3-3').click(function() {
             });
         },
         success: function(data) {
-            /*$.growl({
-                icon: "glyphicon glyphicon-ok",
-                message: "Actualización de tactica con éxito!"
-            }, {
-                type: "success"
-            });*/
+            
         },
         complete: {}
     });
             Tablaali.ajax.reload();
+            ponerimagenes();
+            loadjugadores();
 });
 
 
@@ -396,16 +2011,13 @@ $('#3-4-3').click(function() {
             });
         },
         success: function(data) {
-            /*$.growl({
-                icon: "glyphicon glyphicon-ok",
-                message: "Actualización de tactica con éxito!"
-            }, {
-                type: "success"
-            });*/
+            
         },
         complete: {}
     });
             Tablaali.ajax.reload();
+            ponerimagenes();
+            loadjugadores();
 });
 
 
@@ -442,16 +2054,13 @@ $('#3-5-2').click(function() {
             });
         },
         success: function(data) {
-            /*$.growl({
-                icon: "glyphicon glyphicon-ok",
-                message: "Actualización de tactica con éxito!"
-            }, {
-                type: "success"
-            });*/
+            
         },
         complete: {}
     });
             Tablaali.ajax.reload();
+            ponerimagenes();
+            loadjugadores();
 });
 
 
@@ -488,17 +2097,14 @@ $('#4-5-1').click(function() {
             });
         },
         success: function(data) {
-            /*$.growl({
-                icon: "glyphicon glyphicon-ok",
-                message: "Actualización de tactica con éxito!"
-            }, {
-                type: "success"
-            });*/
+            
         },
         complete: {}
     });
 
             Tablaali.ajax.reload();
+            ponerimagenes();
+            loadjugadores();
 });
 
 $('#5-3-2').click(function() {
@@ -534,16 +2140,13 @@ $('#5-3-2').click(function() {
             });
         },
         success: function(data) {
-            /*$.growl({
-                icon: "glyphicon glyphicon-ok",
-                message: "Actualización de tactica con éxito!"
-            }, {
-                type: "success"
-            });*/
+            
         },
         complete: {}
     });
             Tablaali.ajax.reload();
+            ponerimagenes();
+            loadjugadores();
 });
 
 $('#5-4-1').click(function() {
@@ -579,16 +2182,13 @@ $('#5-4-1').click(function() {
             });
         },
         success: function(data) {
-            /*$.growl({
-                icon: "glyphicon glyphicon-ok",
-                message: "Actualización de tactica con éxito!"
-            }, {
-                type: "success"
-            });*/
+            
         },
         complete: {}
     });
 
             Tablaali.ajax.reload();
+            ponerimagenes();
+            loadjugadores();
 });
 });

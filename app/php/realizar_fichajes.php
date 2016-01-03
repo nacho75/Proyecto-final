@@ -91,24 +91,33 @@ while ($fila5 = mysql_fetch_array($rResult5)) {
    );
 }
 
-
 $i=count($idjug);
-for ($x=0; $x < $i; $x++) { 
-  $sQuery5a = "SELECT idpuja FROM Pujas WHERE idEquiposUsuarios=1 AND idJugadores = '" . $idjug[$x] ."'";
-$rResult5a = mysql_query($sQuery5a, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
 
-while ($fila5a = mysql_fetch_array($rResult5a)) {
+for ($x=0; $x < $i; $x++) { 
+  $j=0;
+  $idpuja="";
+
+  $sQuery5a = "SELECT idpuja FROM Pujas WHERE idEquiposUsuarios=1 AND idJugadores = " . $idjug[$x];
+  $rResult5a = mysql_query($sQuery5a, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
+
+  while ($fila5a = mysql_fetch_array($rResult5a)) {
     $resultado5a[] = array(
       $idpuja[] = $fila5a['idpuja']
-   );
-}
-$j=count($idpuja);
-if ($j>0) {
-  echo "Ya hay puja";
-} else {
-  $query4 = "INSERT INTO `Pujas`(`Puja`, `idEquiposUsuarios`, `idJugadores`) VALUES ('". $pujaadmin[$x] . "', 1, " . $idjug[$x] . ")" ;
+    );
+  }
+
+  if (is_array($idpuja) || is_object($idpuja)){
+      $j=count($idpuja);
+  } else {
+      $j=0;
+  }
+
+  if ($j>0) {
+    echo "Ya hay puja";
+  } else {
+    $query4 = "INSERT INTO `Pujas`(`Puja`, `idEquiposUsuarios`, `idJugadores`) VALUES ('". $pujaadmin[$x] . "', 1, " . $idjug[$x] . ")" ;
     $query_res4 = mysql_query($query4);
-}
+  }
     
 }
 

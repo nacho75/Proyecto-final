@@ -29,8 +29,8 @@ require("php/sesionesadmin.php");
     <![endif]-->
 
     
-    <div class="container-fluid">
-            <div class="navbar-header">
+
+            <div class="navbar-header header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -43,46 +43,13 @@ require("php/sesionesadmin.php");
             </a>
         </div>
         <div class="navbar-collapse collapse header">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="alineacion.php">Alineación</a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clasificación
-                            <b class="caret"></b>
-                        </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="clasificacion_ultjor.php">Ultima jornada</a>
-                        </li>
-                        <li>
-                            <a href="clasificacion_total.php">Total</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="mercado.php" class="dropdown-toggle" data-toggle="dropdown">Mercado de fichajes
-                        <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                    <li>
-                            <a href="mercado.php">Mercado</a>
-                        </li>
-                        <li>
-                            <a href="ofertas_recibidas.php">Ofertas recibidas</a>
-                        </li>
-                        <li>
-                            <a href="ofertas_realizadas.php">Ofertas realizadas</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
             <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="php/salir.php">Salir</a>
                     </li>
                 </ul>
         </div>
-
+    <div class="container-fluid">
       <div id="tabla" class="row">
             <div class="col-md-12">
                 <table id="miTabla" class="table stripe">
@@ -149,7 +116,7 @@ require("php/sesionesadmin.php");
                             <div class="col-sm-10 col-sm-offset-2">
                                 <button id="enviarDoc" type="submit" class="btn btn-primary">Enviar</button>
 
-                                <a class="btn btn-danger" href="administrador.html" role="button">Cancelar</a>
+                                <a class="btn btn-danger" href="administrador.php" role="button">Cancelar</a>
                             </div>
                         </div>
 
@@ -198,7 +165,7 @@ require("php/sesionesadmin.php");
                         <div class="form-group">
                             <div class="col-sm-10 col-sm-offset-2">
                                 <button id="enviar" type="submit" class="btn btn-primary">Enviar</button>
-                                <a class="btn btn-danger" href="administrador.html" role="button">Cancelar</a>
+                                <a class="btn btn-danger" href="administrador.php" role="button">Cancelar</a>
                             </div>
                         </div>
 

@@ -4,7 +4,7 @@ var idJugadores;
            'processing': true,
            'serverSide': true,
            'ajax': 'php/cargar_mercado.php',
-                    "order": [[ 6, "desc" ]],
+                    "order": [[ 6, "asc" ]],
            'language': {
                'sProcessing': 'Procesando...',
                'sLengthMenu': 'Mostrar _MENU_ registros',
@@ -55,6 +55,7 @@ var idJugadores;
         var aData = mercado.row(nRow).data();
         idJugador = aData.idJugadores;
         usuario = aData.Usuario;
+        $('#preciopuja').val(aData.Precio);
     });
 
     $('#basicModal').on('click', '#confpujar', function(e) {
@@ -82,6 +83,20 @@ var idJugadores;
                     $.growl({
                         icon: "glyphicon glyphicon-remove",
                         message: "No puedes pujar menos del valor por los jugadores del admin!"
+                    }, {
+                        type: "danger"
+                    });
+                  } else if(data[0].mensaje == "Error saldo"){
+                    $.growl({
+                        icon: "glyphicon glyphicon-remove",
+                        message: "No puedes pujar porque tu saldo es negativo!"
+                    }, {
+                        type: "danger"
+                    });
+                  } else if(data[0].mensaje == "Error jugador"){
+                    $.growl({
+                        icon: "glyphicon glyphicon-remove",
+                        message: "No puedes pujar por tu propio jugador!"
                     }, {
                         type: "danger"
                     });

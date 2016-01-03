@@ -20,8 +20,8 @@ if (!mysql_select_db($gaSql['db'], $gaSql['link'])) {
 
 mysql_query('SET names utf8');
 
-//sesiones
-$vendedor = "Pepe";
+session_start();
+$vendedor=$_SESSION['usuarios'];
 
 $idjugador = $_POST["idjugador"];
 $comprador = $_POST["usuario"];

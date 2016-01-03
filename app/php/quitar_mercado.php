@@ -23,6 +23,9 @@ $query = "UPDATE Jugadores SET Vendible = 'No' WHERE idJugadores = '" . $id . "'
 
 $query_res = mysql_query($query);
 
+$query5 = "delete from Pujas where idJugadores=" . $id;
+$query_res5 = mysql_query($query5);
+
 if (!$query_res) {
     $mensaje  = 'Error en la consulta: ' . mysql_error() ;
     $estado = mysql_errno();
