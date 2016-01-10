@@ -19,14 +19,28 @@ if (!mysql_select_db($gaSql['db'], $gaSql['link'])) {
 
 
 mysql_query('SET names utf8');
+date_default_timezone_set('Europe/Madrid');
+$fecha=date('Y/m/d h:i:s', time());
 
+$sQuery1ab = "SELECT idJornada FROM Jornada WHERE FechaInicio <= '" . $fecha ."' AND FechaFin >= '" . $fecha ."'";
+    $rResult1ab = mysql_query($sQuery1ab, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
+
+    while ($fila1ab = mysql_fetch_array($rResult1ab)) {
+      $resultado1ab[] = array(
+        $idjornada = $fila1ab['idJornada']
+      );
+    }
 
 session_start();
 $nombreusuario=$_SESSION['usuarios'];
 $id = $_POST["idJugador"];
 $posicion = $_POST["Posicion"];
 
-$sQuery1 = "SELECT Alineacion FROM EquiposUsuarios WHERE NombreUsuario = '" . $nombreusuario."'";
+
+if ($idjornada > 0) {
+	$mensaje  = 'Error jornada';
+} else {
+	$sQuery1 = "SELECT Alineacion FROM EquiposUsuarios WHERE NombreUsuario = '" . $nombreusuario."'";
 $rResult1 = mysql_query($sQuery1, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
 
 while ($fila1 = mysql_fetch_array($rResult1)) {
@@ -123,13 +137,15 @@ if ($posicion == "Portero") {
 $query_res = mysql_query($query);
 
 if (!$query_res) {
-    $mensaje  = 'Error en la consulta: ' . mysql_error() ;
+    $mensaje  = 'Error posicion';
     $estado = mysql_errno();
     
 } else {
     $mensaje = "Actualización correcta";
     $estado = 0;
 }
+}
+
 
 $resultado = array();
  $resultado[] = array(

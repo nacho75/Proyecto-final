@@ -16,10 +16,24 @@ if (!mysql_select_db($gaSql['db'], $gaSql['link'])) {
 }
 
 mysql_query('SET names utf8');
+date_default_timezone_set('Europe/Madrid');
+$fecha=date('Y/m/d h:i:s', time());
+
+$sQuery1ab = "SELECT idJornada FROM Jornada WHERE FechaInicio <= '" . $fecha ."' AND FechaFin >= '" . $fecha ."'";
+    $rResult1ab = mysql_query($sQuery1ab, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
+
+    while ($fila1ab = mysql_fetch_array($rResult1ab)) {
+      $resultado1ab[] = array(
+        $idjornada = $fila1ab['idJornada']
+      );
+    }
 
 $id = $_POST["idJugador"];
 
-$query = "UPDATE Jugadores SET Alineado = 'No' WHERE idJugadores = '" . $id . "'";
+if ($idjornada > 0) {
+    $mensaje  = 'Error jornada';
+} else {
+    $query = "UPDATE Jugadores SET Alineado = 'No' WHERE idJugadores = '" . $id . "'";
 
 $query_res = mysql_query($query);
 
@@ -31,6 +45,8 @@ if (!$query_res) {
     $mensaje = "Actualización correcta";
     $estado = 0;
 }
+}
+
 
 $resultado = array();
 $resultado[] = array(

@@ -5,7 +5,7 @@ require("php/sesionesadmin.php");
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>Comunio</title>
+    <title>Football Fantasy .::. Administrador</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -48,6 +48,9 @@ require("php/sesionesadmin.php");
                         <a href="php/salir.php">Salir</a>
                     </li>
                 </ul>
+        </div>
+        <div class="navbar-collapse collapse header titulos">
+        <h1>Administrador</h1>
         </div>
     <div class="container-fluid">
       <div id="tabla" class="row">

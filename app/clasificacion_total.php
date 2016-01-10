@@ -6,7 +6,7 @@ require("php/datos.php");
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>Comunio</title>
+    <title>Football Fantasy .::. Clasificación total</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -81,6 +81,9 @@ require("php/datos.php");
                         <a href="php/salir.php">Salir</a>
                     </li>
                 </ul>
+        </div>
+        <div class="navbar-collapse collapse header titulos">
+        <h1>Clasificación total</h1>
         </div>
         <div class="navbar-collapse collapse header datos">
         <div class="datos1">

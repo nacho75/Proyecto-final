@@ -7,7 +7,7 @@ require("php/datos.php");
 
     <head>
         <meta charset="utf-8">
-        <title>Comunio</title>
+        <title>Football Fantasy .::. Mercado</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="/favicon.ico">
@@ -80,6 +80,9 @@ require("php/datos.php");
                         <a href="php/salir.php">Salir</a>
                     </li>
                 </ul>
+        </div>
+        <div class="navbar-collapse collapse header titulos">
+        <h1>Mercado de fichajes</h1>
         </div>
         <div class="navbar-collapse collapse header datos">
         <div class="datos1">

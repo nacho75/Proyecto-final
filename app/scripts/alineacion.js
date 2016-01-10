@@ -1737,27 +1737,28 @@ $(document).ready(function() {
 
             },
             success: function(data) {
-                if (data[0].estado == 0) {
-
+                if(data[0].mensaje == "Error jornada"){
                     $.growl({
-
-                        icon: "glyphicon glyphicon-ok",
-                        message: "Jugador alineado correctamente!"
-
-                    }, {
-                        type: "success"
-                    });
-                } else {
-
-                    $.growl({
-
                         icon: "glyphicon glyphicon-remove",
-                        message: "Tienes completa esa posición!"
-
+                        message: "La jornada ha comenzado, no puedes cambiar la alineacion!"
                     }, {
                         type: "danger"
                     });
-                }
+                  } else if(data[0].mensaje == "Error posicion"){
+                    $.growl({
+                        icon: "glyphicon glyphicon-remove",
+                        message: "Tienes completa la posición!"
+                    }, {
+                        type: "danger"
+                    });
+                  } else {
+                    $.growl({
+                        icon: "glyphicon glyphicon-ok",
+                        message: "Jugador alineado correctamente!"
+                    }, {
+                        type: "success"
+                    });
+                    }
 
             },
             complete: {}
@@ -1790,14 +1791,21 @@ $(document).ready(function() {
 
             },
             success: function(data) {
-                $.growl({
-
-                    icon: "glyphicon glyphicon-ok",
-                    message: "Jugador eliminado de la alineación correctamente!"
-
-                }, {
-                    type: "success"
-                });
+                if(data[0].mensaje == "Error jornada"){
+                    $.growl({
+                        icon: "glyphicon glyphicon-remove",
+                        message: "La jornada ha comenzado, no puedes cambiar la alineacion!"
+                    }, {
+                        type: "danger"
+                    });
+                  } else {
+                    $.growl({
+                        icon: "glyphicon glyphicon-ok",
+                        message: "Jugador eliminado de la alineación correctamente!"
+                    }, {
+                        type: "success"
+                    });
+                    }
 
             },
             complete: {}
@@ -1887,6 +1895,7 @@ $(document).ready(function() {
         });
         Tablaali.ajax.reload();
     });
+
 $('#4-4-2').click(function() {
     document.getElementsByClassName('del1')[0].style.visibility = 'hidden';
     document.getElementsByClassName('del2')[0].style.visibility = 'visible';

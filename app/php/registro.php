@@ -9,7 +9,7 @@ $conexion=conectar();
 
 
 $nombre=$_POST['usuario'];
-$pass=$_POST['password'];
+$pass=md5($_POST['password']);
 $email=$_POST['email'];
 $equipo=$_POST['equipo'];
 $saldo=20000000;
@@ -26,7 +26,9 @@ $query2->bindParam(":equipo", $equipo);
 $query2->bindParam(":saldo", $saldo);
 $query2->bindParam(":alineacion", $alineacion);
 $query2->execute();
-echo "<script type=\"text/javascript\">alert(\"El usuario se registro correctamente\");window.location.href=\"../inicio.html\"</script>";
+session_start();
+$_SESSION['usuarios']= $nombre;
+echo "<script type=\"text/javascript\">alert(\"El usuario se registro correctamente\");window.location.href=\"../alineacion.php\"</script>";
 
 include("BD.php" );
 
@@ -56,7 +58,7 @@ while ($fila = mysql_fetch_array($rResult)) {
    );
 }
 
-$sQuery2 = "SELECT idJugadores FROM Jugadores WHERE idEquiposUsuarios = 1 AND Posicion = 'Portero' AND Valor<5000000";
+$sQuery2 = "SELECT idJugadores FROM Jugadores WHERE idEquiposUsuarios = 1 AND Posicion = 'Portero' AND Vendible = 'No' AND Valor<6000000";
 $rResult2 = mysql_query($sQuery2, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
 
 while ($fila2 = mysql_fetch_array($rResult2)) {
@@ -65,7 +67,7 @@ while ($fila2 = mysql_fetch_array($rResult2)) {
    );
 }
 
-$sQuery3 = "SELECT idJugadores FROM Jugadores WHERE idEquiposUsuarios = 1 AND Posicion = 'Defensa' AND Valor<4000000";
+$sQuery3 = "SELECT idJugadores FROM Jugadores WHERE idEquiposUsuarios = 1 AND Posicion = 'Defensa' AND Vendible = 'No' AND Valor<6000000";
 $rResult3 = mysql_query($sQuery3, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
 
 while ($fila3 = mysql_fetch_array($rResult3)) {
@@ -74,7 +76,7 @@ while ($fila3 = mysql_fetch_array($rResult3)) {
    );
 }
 
-$sQuery4 = "SELECT idJugadores FROM Jugadores WHERE idEquiposUsuarios = 1 AND Posicion = 'Centrocampista' AND Valor<4000000";
+$sQuery4 = "SELECT idJugadores FROM Jugadores WHERE idEquiposUsuarios = 1 AND Posicion = 'Centrocampista' AND Vendible = 'No' AND Valor<6000000";
 $rResult4 = mysql_query($sQuery4, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
 
 while ($fila4 = mysql_fetch_array($rResult4)) {
@@ -83,7 +85,7 @@ while ($fila4 = mysql_fetch_array($rResult4)) {
    );
 }
 
-$sQuery5 = "SELECT idJugadores FROM Jugadores WHERE idEquiposUsuarios = 1 AND Posicion = 'Delantero' AND Valor<5000000";
+$sQuery5 = "SELECT idJugadores FROM Jugadores WHERE idEquiposUsuarios = 1 AND Posicion = 'Delantero' AND Vendible = 'No' AND Valor<6000000";
 $rResult5 = mysql_query($sQuery5, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
 
 while ($fila5 = mysql_fetch_array($rResult5)) {

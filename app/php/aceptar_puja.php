@@ -27,7 +27,7 @@ $idjugador = $_POST["idjugador"];
 $comprador = $_POST["usuario"];
 $puja = $_POST["puja"];
 
-$sQuery = "SELECT Valor FROM Jugadores WHERE idJugadores = " . $idjugador ."";;
+$sQuery = "SELECT Valor FROM Jugadores WHERE idJugadores = " . $idjugador ."";
     $rResult = mysql_query($sQuery, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
 
     while ($fila = mysql_fetch_array($rResult)) {

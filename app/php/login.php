@@ -17,7 +17,7 @@ try {
 
 
 $usuario = $_POST['usuario'];
-$password = $_POST['password'];
+$password = md5($_POST['password']);
 
 
 $consulta2 = 'SELECT NombreUsuario FROM EquiposUsuarios WHERE NombreUsuario = ? and Password = ?';
